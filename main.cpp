@@ -1,6 +1,9 @@
 #include <iostream>
 using namespace std;
-
+int addition(int a,int b){
+    int z=a+b;
+    return z;
+}
 int main() {
 
   int i, n;
@@ -28,6 +31,7 @@ int main() {
     cout << n << " is not a prime number";
 
   return 0;
+  
 }
 void func(){
 cout << "this is a commit";
