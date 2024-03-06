@@ -29,3 +29,7 @@ int main() {
 
   return 0;
 }
+void func(){
+cout << "this is a commit";
+
+}
