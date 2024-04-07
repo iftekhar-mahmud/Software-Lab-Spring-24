@@ -174,6 +174,7 @@ $(document).ready(function() {
                 <li><a href="{{route('employee.index')}}">Employees</a></li>
 
                 <li><a href="{{route('doctor.index')}}">Doctor OPD</a></li>
+				<li><a href="{{route('invoice.report')}}">Invoice Report</a></li>
                 
           </ul>
         </li>
@@ -225,6 +226,7 @@ $(document).ready(function() {
                 <li><a href="{{route('microbiology.index')}}"> Microbiology Report </a> </li>
                 <li><a href="{{route('examination.index')}}"> Examination Report </a> </li>
                 <li><a href="{{route('stain.index')}}"> Stain Report </a> </li>
+				<li><a href="{{route('report.index')}}">Report</a></li>
                 
             </ul>
         </li>
