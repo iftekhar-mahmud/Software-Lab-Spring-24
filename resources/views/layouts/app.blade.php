@@ -215,7 +215,18 @@ $(document).ready(function() {
         </li>
 
         @permission('test.index')
-        
+        <li class="dropdown {{ request()->is('invoice*') || request()->is('opd*') || request()->is('package/sale') || request()->is('search/invoice') ? 'active' : '' }}">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-receipt"></i> Invoice/Bill <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+         <li><a href="{{route('invoice.index')}}">Service Bill</a></li>
+          <li><a href="{{route('opd.index')}}"> OPD Bill</a></li>
+          <li><a href="{{url('package/sale')}}"> Package Bill</a></li>
+        @permission('search.invoice')
+          <li><a href="{{route('search.invoice')}}">Invoice Report</a></li>
+        @endpermission
+           
+        </ul>
+        </li>
         @endpermission
         @permission('hospital.setting')
         <li class="dropdown {{ request()->is('user*') || request()->is('role*') || request()->is('setting') || request()->is('backup') ? 'active' : '' }}">
