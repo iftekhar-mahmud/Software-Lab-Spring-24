@@ -215,21 +215,7 @@ $(document).ready(function() {
         </li>
 
         @permission('test.index')
-        <li class="dropdown {{ request()->is('test') || request()->is('reference') || request()->is('haematology') || request()->is('biochemistry') || request()->is('immunology') || request()->is('microbiology') || request()->is('examination') || request()->is('stain') || request()->is('report')  ? 'active' : '' }}">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-flask"></i> Lab Test <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-                <li><a href="{{route('test.index')}}"> Manage Test</a></li>
-                <li><a href="{{route('reference.index')}}"> Test References </a> </li>
-                <li><a href="{{route('haematology.index')}}"> Haematology Report </a> </li>
-                <li><a href="{{route('biochemistry.index')}}"> Biochemistry Report </a> </li>
-                <li><a href="{{route('immunology.index')}}"> Immunology Report </a> </li>
-                <li><a href="{{route('microbiology.index')}}"> Microbiology Report </a> </li>
-                <li><a href="{{route('examination.index')}}"> Examination Report </a> </li>
-                <li><a href="{{route('stain.index')}}"> Stain Report </a> </li>
-				<li><a href="{{route('report.index')}}">Report</a></li>
-                
-            </ul>
-        </li>
+        
         @endpermission
         @permission('hospital.setting')
         <li class="dropdown {{ request()->is('user*') || request()->is('role*') || request()->is('setting') || request()->is('backup') ? 'active' : '' }}">
