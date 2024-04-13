@@ -203,19 +203,6 @@ $(document).ready(function() {
         @endpermission
 
         <li class="dropdown {{ request()->is('invoice*') || request()->is('opd*') || request()->is('package/sale') || request()->is('search/invoice') ? 'active' : '' }}">
-        <ul class="dropdown-menu">
-         <li><a href="{{route('invoice.index')}}">Service Bill</a></li>
-          <li><a href="{{route('opd.index')}}"> OPD Bill</a></li>
-          <li><a href="{{url('package/sale')}}"> Package Bill</a></li>
-        @permission('search.invoice')
-          <li><a href="{{route('search.invoice')}}">Invoice Report</a></li>
-        @endpermission
-           
-        </ul>
-        </li>
-
-        @permission('test.index')
-        <li class="dropdown {{ request()->is('invoice*') || request()->is('opd*') || request()->is('package/sale') || request()->is('search/invoice') ? 'active' : '' }}">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-receipt"></i> Invoice/Bill <span class="caret"></span></a>
         <ul class="dropdown-menu">
          <li><a href="{{route('invoice.index')}}">Service Bill</a></li>
@@ -226,6 +213,25 @@ $(document).ready(function() {
         @endpermission
            
         </ul>
+        </li>
+           
+        </ul>
+        </li>
+
+        @permission('test.index')
+        <li class="dropdown {{ request()->is('test') || request()->is('reference') || request()->is('haematology') || request()->is('biochemistry') || request()->is('immunology') || request()->is('microbiology') || request()->is('examination') || request()->is('stain') || request()->is('report')  ? 'active' : '' }}">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-flask"></i> Lab Test <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+                <li><a href="{{route('test.index')}}"> Manage Test</a></li>
+                <li><a href="{{route('reference.index')}}"> Test References </a> </li>
+                <li><a href="{{route('haematology.index')}}"> Haematology Report </a> </li>
+                <li><a href="{{route('biochemistry.index')}}"> Biochemistry Report </a> </li>
+                <li><a href="{{route('immunology.index')}}"> Immunology Report </a> </li>
+                <li><a href="{{route('microbiology.index')}}"> Microbiology Report </a> </li>
+                <li><a href="{{route('examination.index')}}"> Examination Report </a> </li>
+                <li><a href="{{route('stain.index')}}"> Stain Report </a> </li>
+                <li><a href="{{route('report.index')}}">Report</a></li>
+            </ul>
         </li>
         @endpermission
         @permission('hospital.setting')
