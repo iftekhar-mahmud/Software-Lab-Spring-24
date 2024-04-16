@@ -174,8 +174,8 @@ $(document).ready(function() {
                 <li><a href="{{route('employee.index')}}">Employees</a></li>
 
                 <li><a href="{{route('doctor.index')}}">Doctor OPD</a></li>
-				<li><a href="{{route('invoice.report')}}">Invoice Report</a></li>
-                
+                <li><a href="{{route('invoice.report')}}">Invoice Report</a></li>
+
           </ul>
         </li>
         @endpermission
@@ -214,9 +214,6 @@ $(document).ready(function() {
            
         </ul>
         </li>
-           
-        </ul>
-        </li>
 
         @permission('test.index')
         <li class="dropdown {{ request()->is('test') || request()->is('reference') || request()->is('haematology') || request()->is('biochemistry') || request()->is('immunology') || request()->is('microbiology') || request()->is('examination') || request()->is('stain') || request()->is('report')  ? 'active' : '' }}">
@@ -244,6 +241,7 @@ $(document).ready(function() {
                 <li><a href="{{route('role.index')}}">Roles</a></li>
                 @endpermission
                 <li><a href="{{ route('hospital.setting')}}"> Settings</a></li>
+                <li><a href="{{ route('hospital.backup')}}"> Backup</a></li>
             @endpermission
             </ul>
          </li>
