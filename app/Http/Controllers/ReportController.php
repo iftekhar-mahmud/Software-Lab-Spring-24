@@ -376,49 +376,7 @@ class ReportController extends Controller
     }   
 
 
-    public function examinationReport($test_reports)
-    {
-
-        $list = '';
-        foreach ($test_reports as $test_report) {
-
-            $list .= '<br><h3 align="center">PARASITOLOGY REPORT</h3>';
-            $list .= '<h4 align="center"><u>'.$test_report->test->name.'</u></h4>';
-            $list .= '<table border="1" cellpadding="3" cellspacing="0"  style="width:100%;"><tr><td> Physical  Examination</td><td>Microscopy Examination</td></tr><tr><td><table width="100%" >';
-
-            $macroscopic = $test_report->test->test_examination->macroscopic();
-            $macroscopic_result = unserialize( $test_report->examination_result->macroscopic_result);
-            //return $macroscopic_result;
-            $microscopic = $test_report->test->test_examination->microscopic();
-            $microscopic_result = unserialize( $test_report->examination_result->microscopic_result);
-
-            for ($i = 0 ; $i < count($macroscopic); $i++) { 
-
-                $list .= '<tr><td>'.$macroscopic[$i].'</td><td>'.$macroscopic_result[$i].'</td></tr>';
-            }
-            $list .= '</table></td><td><table width="100%">';
-
-            for ($i = 0 ; $i < count($microscopic); $i++) { 
-
-            $list .= '<tr><td>'.$microscopic[$i].'</td><td> '.$microscopic_result[$i].'</td></tr>';
-            }
-
-            $result = unserialize($test_report->examination_result->result);
-
-            $list .= '</table></td></tr>';
-            if ($result["macroscopic_comment"] || $result["microscopic_comment"]) {
-
-                $list .= '<tr><td>   '.$result["macroscopic_comment"].'</td>';
-                $list .= '<td>  '.$result["microscopic_comment"].'</td></tr>';
-            }
-            $list .= '</table>';
-            $list .= '<p><br>'.$test_report->test_result->result.'</p>';
-
-
-        }
-
-        return $list;
-    } 
+     
 
 
     public function microbiologyReport($test_reports) 
