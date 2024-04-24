@@ -57,7 +57,7 @@
 					</div>
 					<div class="panel-footer">
 
-					<table id="dataPrint" class="table" cellspacing="0" width="100%">
+					<table id="dataPrint" class="table table-bordered table-condensed" cellspacing="0" width="100%">
 						<thead>
 							<tr>
 								<th>Invoice No</th>
@@ -72,10 +72,10 @@
 						<tfoot>
 							<tr>
 								<th><b>Total:</b></th>
-								<th>Rs.{{number_format($total['sub_total'], 2)}}</th>
-								<th>Rs.{{$total['discount']}}</th>
-								<th>Rs.{{number_format($total['tax_amount'], 2)}}</th>
-								<th><b>Rs.{{number_format($total['total_amount'])}}<b></th>
+								<th>${{number_format($total['sub_total'], 2)}}</th>
+								<th>${{$total['discount']}}</th>
+								<th>${{number_format($total['tax_amount'], 2)}}</th>
+								<th><b>${{number_format($total['total_amount'])}}<b></th>
 								<th></th>
 								<th></th>
 							</tr>
@@ -85,10 +85,10 @@
 						@foreach($invoices as $invoice)
 						<tr>
 							<td>{{$invoice->invoice_no}}</td>
-							<td>Rs.{{number_format($invoice->sub_total, 2)}}</td>
-							<td>Rs.{{$invoice->discount}}</td>
-							<td>Rs.{{number_format($invoice->tax_amount, 2)}}</td>
-							<td>Rs.{{number_format($invoice->total_amount, 2)}}</td>
+							<td>${{number_format($invoice->sub_total, 2)}}</td>
+							<td>${{$invoice->discount}}</td>
+							<td>${{number_format($invoice->tax_amount, 2)}}</td>
+							<td>${{number_format($invoice->total_amount, 2)}}</td>
 							<td>{{$invoice->user->name}}</td>
 							<td>{{$invoice->created_at}}</td>
 						</tr>
@@ -96,10 +96,10 @@
 
 						<tr>
 							<td><b>Total:</b></td>
-							<td>Rs.{{number_format($total['sub_total'], 2)}}</td>
-							<td>Rs.{{$total['discount']}}</td>
-							<td>Rs.{{number_format($total['tax_amount'], 2)}}</td>
-							<td>Rs.{{number_format($total['total_amount'])}}</b></td>
+							<td>${{number_format($total['sub_total'], 2)}}</td>
+							<td>${{$total['discount']}}</td>
+							<td>${{number_format($total['tax_amount'], 2)}}</td>
+							<td>${{number_format($total['total_amount'])}}</b></td>
 							<td></td>
 							<td></td>
 						</tr>

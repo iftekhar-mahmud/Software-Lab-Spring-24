@@ -77,9 +77,9 @@
 				</div>
 				</div>
 				<div class="panel-footer">
-	           		<button class="btn btn-primary" type="submit">
+	           		<button class="btn btn-success" type="submit">
 	           		<span class='glyphicon glyphicon-plus'></span>Add</button>
-	           		<button class="btn pull-right" type="reset">Reset</button>
+	           		<button class="btn btn-danger pull-right" type="reset">Reset</button>
            		</div>
            		{!! Form::close()!!}
            		</div>
@@ -97,8 +97,8 @@
 				</div>
 				</div>
 				<div class="panel-footer">
-				<button class="btn btn-primary" type="submit"><span class='glyphicon glyphicon-edit'></span>Edit</button>
-				<a class="btn btn-default pull-right" id="cancel">Cancel</a>
+				<button class="btn btn-success" type="submit"><span class='glyphicon glyphicon-edit'></span>Edit</button>
+				<a class="btn btn-danger pull-right" id="cancel">Cancel</a>
            		
            		</div>
            		{!! Form::close()!!}
@@ -120,7 +120,7 @@
       	<label>Are your sure want to delete this department?</label>
       </div>
     <div class="modal-footer">
-        <button data-dismiss="modal" class="btn btn-default" type="button"><span class='glyphicon glyphicon-remove'></span> No</button>
+        <button data-dismiss="modal" class="btn btn-primary" type="button"><span class='glyphicon glyphicon-remove'></span> No</button>
            <button class="btn btn-danger" type="submit"><span class='glyphicon glyphicon-ok'></span> Yes</button>
     </div>
     {{Form::close()}}

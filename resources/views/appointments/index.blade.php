@@ -29,10 +29,10 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="panel panel-default">
-					<div class="panel-heading">Appointment Table<a class="btn btn-primary pull-right" data-toggle="modal" href="#addAppointment"><span class="glyphicon glyphicon-plus"></span>Add Appointment</a></div>
+					<div class="panel-heading">Appointment Table<a class="btn btn-success pull-right" data-toggle="modal" href="#addAppointment"><span class="glyphicon glyphicon-plus"></span>Add Appointment</a></div>
 					<div class="panel-body">
 					@if($appointments->count())
-						<table id="example" class="table" cellspacing="0" width="100%">
+						<table id="example" class="table table-bordered table-striped table-condensed" cellspacing="0" width="100%">
 				    	<thead>
 				        <tr>
 			            	<th data-sortable="true">ID</th>
@@ -55,15 +55,15 @@
 						    	<td>{{$appointment->doctor->employee->first_name}} {{$appointment->doctor->employee->middle_name}} {{$appointment->doctor->employee->last_name}}</td>
 						    	<td>{{$appointment->description}}</td>
 						    	<td>{{$appointment->time}}</td>
-						    	<<td>{{$appointment->appointment_date}}</td>
+						    	<td>{{$appointment->appointment_date}}</td>
 								<td> 
 									@if($appointment->status)
-								   	<a class="btn btn-sm btn-success" href="{{ route('appointment.edit',$appointment->id) }}"><span class=" glyphicon glyphicon-ok"></span> Complete</a>	
+								   	<a class="btn btn-sm btn-success" href="{{ route('appointment.edit',$appointment->id) }}"><span class=" glyphicon glyphicon-ok"></span> Completed</a>	
 									@else
-									<a class="btn btn-sm btn-warning" href="{{ route('appointment.edit',$appointment->id) }}"><span class=" glyphicon glyphicon-remove"> </span> Pending</a>
+									<a class="btn btn-sm btn-warning" href="{{ route('appointment.edit',$appointment->id) }}"><span class=" glyphicon glyphicon glyphicon-refresh"> </span> Pending</a>
 									@endif
 								</td>
-						    	<td><button class="edit-appointment btn btn-info" data-info="{{$appointment->id}},{{$appointment->name}},{{$appointment->description}},{{$appointment->time}},{{$appointment->doctor_id}},{{$appointment->patient_id}} {{$appointment->working_date}}"><span class="glyphicon glyphicon-edit"></span> Edit
+						    	<td><button class="edit-appointment btn btn-primary" data-info="{{$appointment->id}},{{$appointment->name}},{{$appointment->description}},{{$appointment->time}},{{$appointment->doctor_id}},{{$appointment->patient_id}} {{$appointment->working_date}}"><span class="glyphicon glyphicon-edit"></span> Edit
                         		</button>
                         		@permission('appointment.delete')
 						        <button class="delete-modal btn btn-danger"

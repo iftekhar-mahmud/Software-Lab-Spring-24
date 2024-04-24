@@ -22,7 +22,7 @@
 		<div class="panel panel-default">
 			<div class="panel-heading">Manage User<a class="btn btn-sm btn-primary pull-right" href="{{url('/')}}">Back <span class="glyphicon glyphicon-share-alt"></span></a></div>
 			<div class="panel-body">
-				<table class="table">
+				<table class="table table-bordered table-condensed">
 				<thead>
 					<tr>
 						<th>Username</th>
@@ -36,7 +36,13 @@
 					<tr>
 						<td>{{$user->name}}</td>
 						<td>{{$user->email}}</td>
-						<td>@if(count($user->role)){{$user->role->name}}@endif</td>
+						<td>
+    @if($user->role)
+        {{$user->role->name}}
+    @endif
+</td>
+
+
 						<td><button style="margin-right: 5px" class="btn-sm btn-primary" id="edit_user" data-info =" {{$user->id}},{{$user->name}},{{$user->email}},{{$user->role_id}}"><span class="glyphicon glyphicon-edit "></span></button>
                         @if(Auth::user()->id == $user->id)
                         @else
@@ -98,7 +104,7 @@
                         </div>
 
                         <div class="form-group">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-success">
                                     <span class="glyphicon glyphicon-plus"></span> Add
                                 </button>
                                 <button type="reset" class="btn btn-default">Reset</button>
@@ -140,7 +146,7 @@
 						<input type="password" class="form-control" name="password_confirmation">
 					</div>
                     <div class="form-group">
-                            <button type="submit" class="btn btn-primary">
+                            <button type="submit" class="btn btn-success">
                                 <span class="glyphicon glyphicon-edit"></span> Edit
                             </button>
                             <a class="btn btn-default pull-right" id="cancel">Cancel</a>

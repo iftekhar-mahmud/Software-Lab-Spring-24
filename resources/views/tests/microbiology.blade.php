@@ -28,7 +28,7 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">Microbiology Test</div>
 					<div class="panel-body">
-						<table class="example" class="table" cellspacing="0" width="100%">
+						<table class="example" class="table table-bordered table-condensed" cellspacing="0" width="100%">
 				    	<thead>
 				        <tr>
 				        <th>Name</th>
@@ -63,7 +63,7 @@
 						<div class="input-group">
 							<input id="btn-input" type="text" class="form-control input-md" placeholder="Add new antibiotic" name="name">
 							<span class="input-group-btn">
-								<button class="btn btn-primary btn-md" id="btn-todo">Add</button>
+								<button class="btn btn-success btn-md" id="btn-todo">Add</button>
 							</span>
 						</div>
 					</form>
@@ -75,13 +75,13 @@
 						<div class="input-group">
 							<input id="antibiotic_name" type="text" class="form-control input-md" placeholder="Add new antibiotic" name="name">
 							<span class="input-group-btn">
-								<button class="btn btn-primary btn-md" id="btn-edit">Edit</button>
+								<button class="btn btn-success btn-md" id="btn-edit">Edit</button>
 							</span>
 						</div>
 					</form>
 					</div>
 					<br>
-				<table class="example" class="table" cellspacing="0" width="100%">
+				<table class="example" class="table table-bordered table-condensed" cellspacing="0" width="100%">
 				    <thead>
 				        <tr>
 
@@ -130,7 +130,7 @@
 							@endforeach
 						</select>
 					</div>
-					<button class="btn-sm btn-primary">Add</button>
+					<button class="btn-sm btn-success">Add</button>
 					<input type="reset" value="Reset" class="btn-sm btn-default">
 				{{Form::close()}}
 			</div>

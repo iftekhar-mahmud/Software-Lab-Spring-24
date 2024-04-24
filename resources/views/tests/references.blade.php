@@ -35,7 +35,7 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">Test References</div>
 					<div class="panel-body">
-						<table id="example" class="table" cellspacing="0" width="100%">
+						<table id="example" class="table table-bordered table-condensed" cellspacing="0" width="100%">
 				    	<thead>
 				        <tr>
 				        <th>Test Name</th>

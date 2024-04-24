@@ -17,7 +17,7 @@
 			<div class="panel panel-default">
 				<div class="panel-heading">Manage Role<a class="btn btn-sm btn-primary pull-right" href="{{route('role.create')}}">Add Role <span class="glyphicon glyphicon-share-alt"></span></a></div>
 				<div class="panel-body">
-					<table class="table">
+					<table class="table table-bordered table-condensed">
 				<thead>
 					<tr>
 						<th>ID</th>

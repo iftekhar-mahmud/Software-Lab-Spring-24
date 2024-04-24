@@ -46,7 +46,7 @@
                     </div>
                 </div>
             </div>
-                    <button class="btn-sm btn btn-primary" type="submit">Save</button>
+                    <button class="btn-sm btn btn-success" type="submit">Save</button>
 
                 </div>
 

@@ -28,7 +28,7 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">Haematology Test</div>
 					<div class="panel-body">
-						<table id="example" class="table" cellspacing="0" width="100%">
+						<table id="example" class="table table-bordered table-condensed" cellspacing="0" width="100%">
 				    	<thead>
 				        <tr>
 				        <th>ID</th>
@@ -78,7 +78,7 @@
 					            @endforeach
 					        </select>
 				        </div>
-				        <button class="btn-sm btn-primary">Add</button>
+				        <button class="btn-sm btn-success">Add</button>
 				        <input type="reset" value="Reset" class="btn-sm btn-default">
 				    {{Form::close()}}
 				</div>

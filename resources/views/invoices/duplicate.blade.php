@@ -51,7 +51,7 @@
 		<tr>
 				<td>{{$i++}}</td>
 				<td>{{$sales->service_name}}</td>
-				<td>Rs.{{number_format($sales->amount, 2)}}</td>
+				<td>${{number_format($sales->amount, 2)}}</td>
 			</tr>
 		@endforeach
 		@elseif($invoices->opd)
@@ -59,7 +59,7 @@
 		<tr>
 				<td>{{$i++}}</td>
 				<td>{{$sales->opd_name}}</td>
-				<td>Rs.{{number_format($sales->opd_charge,2)}}</td>
+				<td>${{number_format($sales->opd_charge,2)}}</td>
 			</tr>
 		@endforeach
 		@else
@@ -67,23 +67,23 @@
 		<tr>
 			<td>{{$i++}}</td>
 			<td>{{$sales->package->name}}</td>
-			<td>Rs.{{number_format($sales->package_price, 2)}}</td>
+			<td>${{number_format($sales->package_price, 2)}}</td>
 		</tr>
 		@endforeach
 		@endif
 			
 			<tr>
-				<td></td><td></td><td><strong>Sub Total: </strong>Rs. {{number_format($invoices->sub_total, 2)}}</td>
+				<td></td><td></td><td><strong>Sub Total: </strong>$ {{number_format($invoices->sub_total, 2)}}</td>
 			</tr>
 
 			<tr>
-				<td></td><td></td><td><strong>Discount: </strong>Rs. {{$invoices->discount}}</td>
+				<td></td><td></td><td><strong>Discount: </strong>$ {{$invoices->discount}}</td>
 			</tr>
 			<tr>
-				<td></td><td></td><td><strong>HST({{$setting->tax_percent}}%): </strong>RS.{{number_format($invoices->tax_amount,2)}}</td>
+				<td></td><td></td><td><strong>HST({{$setting->tax_percent}}%): </strong>${{number_format($invoices->tax_amount,2)}}</td>
 			</tr>
 			<tr>
-				<td></td><td></td><td><strong>Total: </strong>RS.{{number_format($invoices->total_amount)}}</td>
+				<td></td><td></td><td><strong>Total: </strong>${{number_format($invoices->total_amount)}}</td>
 			</tr>
 		</tbody>
 		

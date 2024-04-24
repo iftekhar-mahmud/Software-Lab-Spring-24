@@ -86,15 +86,15 @@
 		</div>
 		<div class=" col-md-4 form-group">
 			<label>Country:</label>
-		 	{!! Form::text('country', 'Nepal', array('class' => 'form-control')) !!}
+		 	{!! Form::text('country', '', array('class' => 'form-control')) !!}
 		</div>
 		<div class=" col-md-4 form-group">
 			<label>State:</label>
-		 	{!! Form::text('state', 'Bagmati', array('class' => 'form-control')) !!}
+		 	{!! Form::text('state', '', array('class' => 'form-control')) !!}
 		</div>
 		<div class=" col-md-4 form-group">
 			<label>District:</label>
-		 	{!! Form::text('district', 'Kathmandu', array('class' => 'form-control')) !!}
+		 	{!! Form::text('district', '', array('class' => 'form-control')) !!}
 		</div>
 		<div class=" col-md-4 form-group">
 			<label>Location:</label>
@@ -113,8 +113,8 @@
       </div>
     <div class="modal-footer">
         <button data-dismiss="modal" class="btn btn-default" type="button">Close</button>
-          <button class="btn " type="reset">Reset</button>
-           <button class="btn btn-primary" type="submit">Save changes</button>
+          <button class="btn btn-danger" type="reset">Reset</button>
+           <button class="btn btn-success" type="submit">Save changes</button>
            {{Form::close()}}
      @permission('patient.destroy')
     {!! Form::open(['method' => 'DELETE','route' => ['patient.destroy', $patient->id],'id' =>'deleteConfirm','style'=>'display:inline','class'=>'pull-left']) !!}

@@ -55,7 +55,7 @@
                                     <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
                                 </label>
                             </div>
-                            <button type="submit" class="btn btn-primary">Login</a>
+                            <button type="submit" class="btn btn-success">Login</a>
                         </fieldset>
                     </form>
                 </div>

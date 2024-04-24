@@ -69,7 +69,7 @@
 							{!! Form::textarea('description', null, array('class' => 'form-control', 'size' => '5x8')) !!}
 						</div>
 						<div class="form-group">
-						<button class="btn btn-primary" type="submit">Save Changes</button>
+						<button class="btn btn-success" type="submit">Save Changes</button>
 						<button class="btn btn-primary" type="reset">Default</button>
 						</div>
 					
@@ -91,7 +91,7 @@
 							{!! Form::text('registration_no', null, array('class' => 'form-control')) !!}
 						</div>
 						<div class="form-group">
-						<button class="btn btn-primary" type="submit">Save Changes</button>
+						<button class="btn btn-success" type="submit">Save Changes</button>
 						<button class="btn btn-primary" type="reset">Default</button>
 						</div>
 					
@@ -114,7 +114,7 @@
 							{!! Form::text('tax_percent', null, array('class' => 'form-control')) !!}
 						</div>
 						<div class="form-group">
-						<button class="btn btn-primary" type="submit">Save Changes</button>
+						<button class="btn btn-success" type="submit">Save Changes</button>
 						<button class="btn btn-primary" type="reset">Default</button>
 						</div>
 					
@@ -141,7 +141,7 @@
 							{!! Form::text('invoice_message', null, array('class' => 'form-control')) !!}
 						</div>
 					<div class="form-group">
-						<button class="btn btn-primary" type="submit">Save Changes</button>
+						<button class="btn btn-success" type="submit">Save Changes</button>
 						<button class="btn btn-primary" type="reset">Default</button>
 						</div>
 					{{ Form::close()}}

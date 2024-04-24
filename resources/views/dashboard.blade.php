@@ -5,9 +5,10 @@
         <div class="row">
             <ol class="breadcrumb">
                 <li><a href="#"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg></a></li>
-                <li class="active">Icons</li>
+                <li class="active">Dashboard</li>
             </ol>
-        </div><!--/.row-->
+        </div>
+        <!--/.row-->
        
         <div class="row">
             <div class="col-lg-12">
@@ -22,23 +23,10 @@
         @endif
         <div class="row">
             <div class="col-xs-12 col-md-6 col-lg-3">
-                <div class="panel panel-blue panel-widget ">
-                    <div class="row no-padding">
-                        <div class="col-sm-3 col-lg-5 widget-left">
-                            <svg class="glyph stroked bag"><use xlink:href="#stroked-male-user"></use></svg>
-                        </div>
-                        <div class="col-sm-9 col-lg-7 widget-right">
-                            <div class="large">{{$patients->count()}}</div>
-                            <div class="text-muted">Total Patient</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-12 col-md-6 col-lg-3">
                 <div class="panel panel-orange panel-widget">
                     <div class="row no-padding">
                         <div class="col-sm-2 col-lg-3 widget-left">
-                            <svg class="glyph stroked clipboard with paper"><use xlink:href="#stroked-clipboard-with-paper"/></use></svg>
+                        <i class="fas fa-notes-medical fa-3x"></i>
                         </div>
                         <div class="col-sm-10 col-lg-9 widget-right">
                             <div class="large">{{$pending['appointment']}}</div>
@@ -48,10 +36,23 @@
                 </div>
             </div>
             <div class="col-xs-12 col-md-6 col-lg-3">
+                <div class="panel panel-blue panel-widget ">
+                    <div class="row no-padding">
+                        <div class="col-sm-3 col-lg-5 widget-left">
+                        <i class="fas fa-users fa-3x"></i>
+                        </div>
+                        <div class="col-sm-9 col-lg-7 widget-right">
+                            <div class="large">{{$patients->count()}}</div>
+                            <div class="text-muted">Total Patient</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-md-6 col-lg-3">
                 <div class="panel panel-teal panel-widget">
                     <div class="row no-padding">
                         <div class="col-sm-3 col-lg-5 widget-left">
-                            <svg class="glyph stroked  app-window-with-content"><use xlink:href="#stroked-app-window-with-content"></use></svg>
+                        <i class="fas fa-vial fa-3x"></i>
                         </div>
                         <div class="col-sm-9 col-lg-7 widget-right">
                             <div class="large">{{$total_test}}</div>
@@ -64,7 +65,7 @@
                 <div class="panel panel-red panel-widget">
                     <div class="row no-padding">
                         <div class="col-sm-3 col-lg-5 widget-left">
-                            <svg class="glyph stroked app-window-with-content"><use xlink:href="#stroked-app-window-with-content"></use></svg>
+                        <i class="fas fa-user-md fa-3x"></i>
                         </div>
                         <div class="col-sm-9 col-lg-7 widget-right">
                             <div class="large">{{$total_doctor}}</div>
@@ -76,61 +77,18 @@
         </div><!--/.row-->
         
         <div class="row">
-            <div class="col-lg-12">
-            <!-- Today invoice collection -->
-                <div class="panel panel-default">
-                    <div class="panel-heading">Today Collection</div>
-                    <div class="panel-body">
-                        <table id="table" class="display" cellspacing="0" width="100%">
-                            <thead>
-                               <tr>
-                               <th>Sn.</th>
-                                <th>Invoice No</th>
-                                <th>Payment</th>
-                                <th>Sub Total</th>
-                                <th>Discount</th>
-                                <th>Tax Amount</th>
-                                <th>Total Amount</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <?php $i=1;?>
-                            @foreach($invoices as $invoice)
-                                <tr>
-                                    <td>{{$i++}}</td>
-                                    <td>{{$invoice->invoice_no}}</td>
-                                    <td>{{$invoice->payment_type}}</td>
-                                    <td>Rs.{{number_format($invoice->sub_total, 2)}}</td>
-                                    <td>Rs.{{$invoice->discount}}</td>
-                                    <td>Rs.{{number_format($invoice->tax_amount, 2)}}</td>
-                                    <td>Rs.{{number_format($invoice->total_amount)}}</td>
-                                </tr>@endforeach
-                            </tbody>
-                                 <tr>
-                                    <th></th>
-                                    <th>Total:</th>
-                                    <th></th>
-                                    <th>Rs.{{number_format($total['sub_total'], 2)}}</th>
-                                    <th>Rs.{{$total['discount']}}</th>
-                                    <th>Rs.{{number_format($total['tax_amount'], 2)}}</th>
-                                    <th>Rs.{{number_format($total['total_amount'])}}</th>
-                                </tr>                    
-                        </table>
-                    </div>
-                </div>
-            </div>
-            <!-- Today collection ends -->
+            
             <!-- Appointment for today -->
              <div class="col-lg-12">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Today Appointment</div>
+                    <div class="panel-heading">Today's Appointment</div>
                     <div class="panel-body">
-                         <table id="table1" class="display" cellspacing="0" width="100%">
+                         <table id="table1" class="display table table-bordered table-condensed table-hover" cellspacing="0" width="100%">
                             <thead>
                                <tr>
-                                <th>Sn.</th>
+                                <th>#</th>
                                 <th>Name</th>
-                                <th>Patient Name</th>
+                                <th>Patient</th>
                                 <th>Doctor</th>
                                 <th>Description</th>
                                 <th>Time</th>
@@ -151,7 +109,7 @@
                                      @if($appointment->status)
                                     <a class="btn-sm btn-success" href="{{ route('appointment.edit',$appointment->id) }}"><span class=" glyphicon glyphicon-ok"></span> Complete</a>    
                                     @else
-                                    <a class="btn-sm btn-warning" href="{{ route('appointment.edit',$appointment->id) }}"><span class=" glyphicon glyphicon-remove"> </span> Pending</a>
+                                    <a class="btn-sm btn-warning" href="{{ route('appointment.edit',$appointment->id) }}"><span class=" glyphicon glyphicon-refresh"> </span> Pending</a>
                                     @endif
                                     </td>
                                 </tr>
@@ -162,17 +120,61 @@
                 </div>
             </div>
             <!-- Appointmet table ends -->
+            <div class="col-lg-12">
+            <!-- Today invoice collection -->
+                <div class="panel panel-default">
+                    <div class="panel-heading">Today's Collection</div>
+                    <div class="panel-body">
+                        <table id="table" class="display table table-bordered table-condensed" cellspacing="0" width="100%">
+                            <thead>
+                               <tr>
+                               <th>#</th>
+                                <th>Invoice No</th>
+                                <th>Payment</th>
+                                <th>Sub Total</th>
+                                <th>Discount</th>
+                                <th>Tax</th>
+                                <th>Total Amount</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <?php $i=1;?>
+                            @foreach($invoices as $invoice)
+                                <tr>
+                                    <td>{{$i++}}</td>
+                                    <td>{{$invoice->invoice_no}}</td>
+                                    <td>{{$invoice->payment_type}}</td>
+                                    <td>${{number_format($invoice->sub_total, 2)}}</td>
+                                    <td>${{$invoice->discount}}</td>
+                                    <td>${{number_format($invoice->tax_amount, 2)}}</td>
+                                    <td>${{number_format($invoice->total_amount)}}</td>
+                                </tr>@endforeach
+                            </tbody>
+                                 <tr>
+                                    <th></th>
+                                    <th>Total:</th>
+                                    <th></th>
+                                    <th>${{number_format($total['sub_total'], 2)}}</th>
+                                    <th>${{$total['discount']}}</th>
+                                    <th>${{number_format($total['tax_amount'], 2)}}</th>
+                                    <th>${{number_format($total['total_amount'])}}</th>
+                                </tr>                    
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- Today collection ends -->
             <!-- opd table -->
             <div class="col-lg-12">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Today OPD</div>
+                    <div class="panel-heading">Today's OPD</div>
                     <div class="panel-body">
-                         <table id="example" class="display" cellspacing="0" width="100%">
+                         <table id="example" class="display table table-bordered table-condensed table-hover" cellspacing="0" width="100%">
                             <thead>
                                <tr>
-                                <th>Sn.</th>
-                                <th>Patient Name</th>
-                                <th>Doctor Name</th>
+                                <th>#</th>
+                                <th>Patient</th>
+                                <th>Doctor</th>
                                 <th>Register At</th>
                                 <th>Status</th>
                                 </tr>
@@ -186,9 +188,9 @@
                                     <td>{{$opd->doctor->employee->first_name}} {{$opd->doctor->employee->middle_name}} {{$opd->doctor->employee->last_name}}</td>
                                     <td>{{$opd->created_at}}</td>
                                     @if($opd->status == 1)
-                                    <td><span class="btn-sm btn-success glyphicon glyphicon-ok">Complete</span></td>
+                                    <td><span class="btn-sm btn-success glyphicon glyphicon-ok"> Complete</span></td>
                                     @else
-                                    <td><a class="btn-sm btn-warining" href="{{ route('doctor.edit',$opd->id) }}"><span class=" glyphicon glyphicon-remove">Pending</span></a> </span></td>
+                                    <td><a class="btn-sm btn-warining" href="{{ route('doctor.edit',$opd->id) }}"><span class=" glyphicon glyphicon-refresh"> Pending</span></a> </span></td>
                                     @endif
                                 </tr>
                                 @endforeach

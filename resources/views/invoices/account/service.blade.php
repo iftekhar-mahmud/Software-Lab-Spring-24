@@ -57,7 +57,7 @@
 					</div>
 					<div class="panel-footer">
 
-					<table id="dataPrint" class="table" cellspacing="0" width="100%">
+					<table id="dataPrint" class="table table-bordered table-condensed" cellspacing="0" width="100%">
 						<thead>
 							<tr>
 								<th>Invoice No</th>
@@ -71,7 +71,7 @@
 							<tr>
 								<th><b>Total:</b></th>
 								<th></th>
-								<th><b>Rs.{{$total['total']}}<b></th>
+								<th><b>${{$total['total']}}<b></th>
 								<th></th>
 								<th></th>
 							</tr>
@@ -82,7 +82,7 @@
 						<tr>
 							<td>{{$invoice->invoice->invoice_no}}</td>
 							<td>{{$invoice->service_name}}</td>
-							<td>Rs.{{number_format($invoice->amount, 2)}}</td>
+							<td>${{number_format($invoice->amount, 2)}}</td>
 							<td>{{$invoice->invoice->user->name}}</td>
 							<td>{{$invoice->created_at}}</td>
 						</tr>
@@ -91,7 +91,7 @@
 						<tr>
 							<td><b>Total:</b></td>
 							<td></td>
-							<td>Rs.{{number_format($total['total'])}}</b></td>
+							<td>${{number_format($total['total'])}}</b></td>
 							<td></td>
 							<td></td>
 						</tr>

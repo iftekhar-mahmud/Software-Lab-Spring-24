@@ -28,7 +28,7 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">Stain Test</div>
 					<div class="panel-body">
-						<table class="example" class="table" cellspacing="0" width="100%">
+						<table class="example" class="table table-bordered table-condensed" cellspacing="0" width="100%">
 				    	<thead>
 				        <tr>
 				        <th>Name</th>

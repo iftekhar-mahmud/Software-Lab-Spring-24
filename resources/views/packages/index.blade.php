@@ -31,7 +31,7 @@
 					Back <span class="glyphicon glyphicon-share-alt"></span></a></div>
 					<div class="panel-body">
 					@if($packages->count())
-						<table id="example" class="table" cellspacing="0" width="100%">
+						<table id="example" class="table table-bordered table-condensed" cellspacing="0" width="100%">
 						<thead>
 				        <tr>
 				           <th>S.n</th>
@@ -55,7 +55,7 @@
 						    			<li>{{$package_test->test->name}}<a class="btn-sm" id="test_delete" data-id="{{$package_test->id}}"><span class="glyphicon glyphicon-remove"></span></a></li>
 						    		@endforeach
 						    	</td> 
-						    	<td>Rs.{{$package->price}}</td>	
+						    	<td>${{$package->price}}</td>	
 								<td>
                            <button id="package_edit" class="btn-sm btn-info" data-edit="{{$package->id}}, {{$package->name}}, {{$package->description}}, {{$package->price}}, {{$package->status}}"><span class="glyphicon glyphicon-edit" ></span>
                             </button>
@@ -105,7 +105,7 @@
 	    </div>
 			    </div>
 			    <div class="panel-footer">
-				<button class="btn btn-primary" type="submit"><span class='glyphicon glyphicon-edit'></span>Add</button>
+				<button class="btn btn-success" type="submit"><span class='glyphicon glyphicon-edit'></span>Add</button>
 				<button class="btn btn-default pull-right" type="reset">Reset</button>
            		</div>
            		{!! Form::close()!!}
@@ -148,7 +148,7 @@
 			    </div>
 			    </div>
 				<div class="panel-footer">
-					<button class="btn btn-primary" type="submit"><span class='glyphicon glyphicon-edit'></span>Edit</button>
+					<button class="btn btn-success" type="submit"><span class='glyphicon glyphicon-edit'></span>Edit</button>
 					<a class="btn btn-default pull-right" id="cancel">Cancel</a>
            		</div>
            		

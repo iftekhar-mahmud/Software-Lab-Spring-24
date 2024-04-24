@@ -29,7 +29,7 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">Report</div>
 					<div class="panel-body">
-						<table id="example" class="table" cellspacing="0" width="100%">
+						<table id="example" class="table table-bordered table-condensed" cellspacing="0" width="100%">
 				    	<thead>
 				        <tr>
 				            <th>S.N.</th>
@@ -59,7 +59,7 @@
 					    		</td>
 					    		
 					           	<td>
-	                           		<button class="edit-modal btn-sm btn-info" onclick="edit(this.id)" id="{{$report->id}}""><span class="glyphicon glyphicon-edit"></span> Edit
+	                           		<button class="edit-modal btn-sm btn-success" onclick="edit(this.id)" id="{{$report->id}}""><span class="glyphicon glyphicon-edit"></span> Edit
                            	 		</button>
                            	 		 <a href="{{route('report.generate',$report->id)}}" class="btn btn-sm btn-danger" ><span class="glyphicon glyphicon-print"></span>Generate</a>
 		                        @if($report->report)

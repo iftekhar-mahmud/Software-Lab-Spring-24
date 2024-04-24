@@ -186,7 +186,7 @@ $(document).ready(function() {
     		$('#msg').hide();
         	$('#complete').show();
     		$('#comment').show();
-    		$('#tender').html('<strong>Sub Total: Rs.'+ sub_total +'</strong><br><strong>Discount:Rs.'+ discount + '</strong><br><b>------------------------------</b><br><strong>Taxable Amount:' + total+'</strong><br><strong>HST('+ tax+'%): Rs.'+ tax_amount +'</strong><br><b>-----------------------------<b><br><strong>Total: Rs.'+ total_amount +'</strong><br><strong>Cash: RS. ' + cash + '</strong><br><strong>Return:RS.' + tender_amount+ '</strong>');
+    		$('#tender').html('<strong>Sub Total: $'+ sub_total +'</strong><br><strong>Discount:$'+ discount + '</strong><br><b>------------------------------</b><br><strong>Taxable Amount:' + total+'</strong><br><strong>HST('+ tax+'%): $'+ tax_amount +'</strong><br><b>-----------------------------<b><br><strong>Total: $'+ total_amount +'</strong><br><strong>Cash: $ ' + cash + '</strong><br><strong>Return:$' + tender_amount+ '</strong>');
     		$('#tender').show();
     		}  
     	}

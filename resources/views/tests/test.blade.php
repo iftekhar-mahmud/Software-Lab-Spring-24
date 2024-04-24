@@ -35,7 +35,7 @@
 					<div class="panel-heading">Manage Test</div>
 					<div class="panel-body">
 					
-					<table id="example" class="table" cellspacing="0" width="100%">
+					<table id="example" class="table table-bordered table-condensed" cellspacing="0" width="100%">
 				    	<thead>
 				        <tr>
 			            	<th>ID</th>
