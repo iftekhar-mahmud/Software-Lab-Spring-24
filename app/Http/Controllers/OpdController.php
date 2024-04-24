@@ -103,9 +103,9 @@ class OpdController extends Controller
 	 		 			
 		$list .='<tr><td>1</td><td>OPD Charge('.$doctor->employee->first_name.' '.$doctor->employee->last_name.')</td><td>Rs.'.$doctor->opd_charge.'</td><td><a href="/opd"><span class="btn-sm btn-danger glyphicon glyphicon-remove"></span></a></button></td></tr>
 		<div class="total_field">
-		<tr><td></td><td></td><td></td><td>Sub Total:Rs. '.$doctor->opd_charge.'</td></tr>
-		<tr><td></td><td></td><td></td><td>HST('.$hospital->tax_percent.'%):Rs. '.$tax_amount.'</td></tr><input type="hidden" id="opd_charge" value="' . $doctor->opd_charge.'"><input type="hidden" id="tax_percent" value="' .$hospital->tax_percent.'">
-		<tr class="success"><td></td><td></td><td></td><td >Total Amount:Rs. '.$total_amount.'</td></tr></div>	</tbody>
+		<tr><td></td><td></td><td></td><td>Sub Total:$. '.$doctor->opd_charge.'</td></tr>
+		<tr><td></td><td></td><td></td><td>HST('.$hospital->tax_percent.'%):$. '.$tax_amount.'</td></tr><input type="hidden" id="opd_charge" value="' . $doctor->opd_charge.'"><input type="hidden" id="tax_percent" value="' .$hospital->tax_percent.'">
+		<tr class="success"><td></td><td></td><td></td><td >Total Amount:$. '.$total_amount.'</td></tr></div>	</tbody>
 	 		 				
 	 		 			</table>';
 		return $list;

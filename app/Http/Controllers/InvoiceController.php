@@ -183,8 +183,8 @@ class InvoiceController extends Controller
              $list .= '</tr>';
         }
           $list .= '<tr><th></th><th></th><th></th><th>Sub Total:'.number_format($sub_total, 2).'</th></tr>
-       <tr><td></td><td></td><td></td><td>HST('.$hospital->tax_percent.'%):Rs. '.number_format($tax_amount, 2).'</td></tr><input type="hidden" id="sub_total" value="' . $sub_total.'"><input type="hidden" id="tax_percent" value="' .$hospital->tax_percent.'">
-        <tr class="success"><td></td><td></td><td></td><td >Total Amount:Rs. '.number_format($total_amount).'</td></tr></div>  </tbody>
+       <tr><td></td><td></td><td></td><td>HST('.$hospital->tax_percent.'%):$. '.number_format($tax_amount, 2).'</td></tr><input type="hidden" id="sub_total" value="' . $sub_total.'"><input type="hidden" id="tax_percent" value="' .$hospital->tax_percent.'">
+        <tr class="success"><td></td><td></td><td></td><td >Total Amount:$. '.number_format($total_amount).'</td></tr></div>  </tbody>
                             
                         </table>';
        
@@ -229,8 +229,8 @@ class InvoiceController extends Controller
              $list .= '</tr>';
         }
        $list .= '<tr><th></th><th></th><th></th><th>Sub Total:'.number_format($sub_total, 2).'</th></tr>
-       <tr><td></td><td></td><td></td><td>HST('.$hospital->tax_percent.'%):Rs. '.number_format($tax_amount, 2).'</td></tr><input type="hidden" id="sub_total" value="' . $sub_total.'"><input type="hidden" id="tax_percent" value="' .$hospital->tax_percent.'">
-        <tr class="success"><td></td><td></td><td></td><td >Total Amount:Rs. '.number_format($total_amount).'</td></tr></div>  </tbody>
+       <tr><td></td><td></td><td></td><td>HST('.$hospital->tax_percent.'%):$. '.number_format($tax_amount, 2).'</td></tr><input type="hidden" id="sub_total" value="' . $sub_total.'"><input type="hidden" id="tax_percent" value="' .$hospital->tax_percent.'">
+        <tr class="success"><td></td><td></td><td></td><td >Total Amount:$. '.number_format($total_amount).'</td></tr></div>  </tbody>
                             
                         </table>';
        
