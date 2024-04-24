@@ -29,9 +29,9 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="panel panel-default">
-					<div class="panel-heading">Patient Table<a class="btn btn-success pull-right" data-toggle="modal" href="#addPatient"><span class="glyphicon glyphicon-plus"></span>Add Patient</a></div>
+					<div class="panel-heading">Patient Table<a class="btn btn-primary pull-right" data-toggle="modal" href="#addPatient"><span class="glyphicon glyphicon-plus"></span>Add Patient</a></div>
 					<div class="panel-body">
-						<table id="example" class="table table-bordered table-condensed" cellspacing="0" width="100%">
+						<table id="example" class="table" cellspacing="0" width="100%">
 						<thead>
 				        <tr>
 				            <th >ID</th>
@@ -51,7 +51,7 @@
 				    		<td>{{$patient->district}}, {{$patient->location}}</td>
 				    		<td>{{$patient->email}}</td>
 				            <td>
-				             <a class="btn btn-sm btn-primary glyphicon glyphicon-eye-open" href="{{ route('patient.show',$patient->id) }}"></a>
+				             <a class="btn btn-sm btn-primary glyphicon glyphicon-eye-open" href="{{ route('patient.show',$patient->id) }}"> Profile</a>
 				            
 				        </tr>
 				    @endforeach

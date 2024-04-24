@@ -36,7 +36,7 @@
 	
 <br><br>
 <div class="col-md-12">
-	<table class="table table-bordered table-condensed">
+	<table class="table">
 		<thead>
 			<tr>	
 				<th>S.N.</th>
@@ -50,7 +50,7 @@
 			<tr>
 				<td>{{$i++}}</td>
 				<td>{{$invoice_return->invoice->invoice_no}}</td>
-				<td>${{$invoice_return->return_amount}}</td>
+				<td>Rs.{{$invoice_return->return_amount}}</td>
 				<td>{{$invoice_return->return_reason}}</td>
 			</tr>
 		</tbody>

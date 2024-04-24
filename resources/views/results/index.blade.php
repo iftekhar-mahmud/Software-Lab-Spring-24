@@ -98,8 +98,8 @@
 				</div>
 			<div class="modal-footer">
 				<button data-dismiss="modal" class="btn btn-default" type="button"><span class='glyphicon glyphicon-remove'></span> Close</button>
-				<button class="btn btn-danger" type="reset">Reset</button>
-				<button class="btn btn-success" type="submit"><span class='glyphicon glyphicon-ok'></span> Save changes</button>
+				<button class="btn " type="reset">Reset</button>
+				<button class="btn btn-primary" type="submit"><span class='glyphicon glyphicon-ok'></span> Save changes</button>
 			</div>
 			{{Form::close()}}
 		</div>

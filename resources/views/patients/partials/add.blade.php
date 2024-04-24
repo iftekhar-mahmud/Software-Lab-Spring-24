@@ -60,7 +60,7 @@
 	    </div>
 		<div class=" col-md-4 form-group">
 			<label>Date of Birth:</label>
-			{!! Form::date('birth_date', null, array('class' => 'form-control')) !!}
+			{!! Form::text('birth_date', null, array('class' => 'form-control' , 'id'=>'nepaliDate5')) !!}
 		</div>
 		<div class=" col-md-4 form-group">
 			<label>Age:</label>
@@ -76,19 +76,19 @@
 		</div>
 		<div class=" col-md-4 form-group">
 			<label>Country:</label>
-		 	{!! Form::text('country', '', array('class' => 'form-control')) !!}
+		 	{!! Form::text('country', 'Nepal', array('class' => 'form-control')) !!}
 		</div>
 		<div class=" col-md-4 form-group">
 			<label>State:</label>
-		 	{!! Form::text('state', '', array('class' => 'form-control')) !!}
+		 	{!! Form::text('state', 'Bagmati', array('class' => 'form-control')) !!}
 		</div>
 		<div class=" col-md-4 form-group">
 			<label>District:</label>
-		 	{!! Form::text('district', '', array('class' => 'form-control')) !!}
+		 	{!! Form::text('district', 'Bhaktapur', array('class' => 'form-control')) !!}
 		</div>
 		<div class=" col-md-4 form-group">
 			<label>Location:</label>
-			{!! Form::textarea('location', '', array('class' => 'form-control','required'=>'required','size' => '5x3')) !!}
+			{!! Form::textarea('location', 'Lokanthali', array('class' => 'form-control','required'=>'required','size' => '5x3')) !!}
 		</div>
 		
 		<div class=" col-md-4 form-group">
@@ -103,8 +103,8 @@
       </div>
     <div class="modal-footer">
         <button data-dismiss="modal" class="btn btn-default" type="button">Close</button>
-          <button class="btn btn-danger" type="reset">Reset</button>
-           <button class="btn btn-success" type="submit">Save changes</button>
+          <button class="btn " type="reset">Reset</button>
+           <button class="btn btn-primary" type="submit">Save changes</button>
     </div>
     {{Form::close()}}
   </div>

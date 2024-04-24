@@ -28,7 +28,7 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">Examination Test</div>
 					<div class="panel-body">
-						<table id="example" class="table table-bordered table-condensed" cellspacing="0" width="100%">
+						<table id="example" class="table" cellspacing="0" width="100%">
 				    	<thead>
 				        <tr>
 				        <th>ID</th>
@@ -86,7 +86,7 @@
 						        </td>
 						    </tr>
 						</table><br>
-						<a class="btn btn-success btn-md add_more_microscopics">Add More</a>
+						<a class="btn btn-primary btn-md add_more_microscopics">Add More</a>
 						</div>
 						<div class="form-group">
 					    <label>Macroscopics:</label>
@@ -97,10 +97,10 @@
 								</td>
 							</tr>
 						</table><br>
-						<a class="btn btn-success btn-md add_more_macroscopics">Add More</a>
+						<a class="btn btn-primary btn-md add_more_macroscopics">Add More</a>
 						</div>
 
-				        <button class="btn-sm btn-success">Add</button>
+				        <button class="btn-sm btn-primary">Add</button>
 				        <input type="reset" value="Reset" class="btn-sm btn-default">
 				    {{Form::close()}}
 				</div>
@@ -130,7 +130,7 @@
 							</table>
 						</div>
 						<br>
-						<a class="btn btn-success btn-md add_more_microscopics">Add More</a>
+						<a class="btn btn-primary btn-md add_more_microscopics">Add More</a>
 
 						<div class="form-group">
 						    <label>Macroscopics:</label>
@@ -139,10 +139,10 @@
 								 </tr>
 							</table>
 						</div><br>
-							<a class="btn btn-success btn-md add_more_macroscopics">Add More</a>
+							<a class="btn btn-primary btn-md add_more_macroscopics">Add More</a>
 					</div>
 					<div class="panel-footer">
-				        <button class="btn-sm btn-success">Edit</button>
+				        <button class="btn-sm btn-primary">Edit</button>
 				        <input type="reset" value="Cancel" class="btn-sm btn-default cancel">
 				    </div>
 				    {{Form::close()}}

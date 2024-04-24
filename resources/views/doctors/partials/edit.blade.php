@@ -37,8 +37,8 @@
       </div>
     <div class="modal-footer">
         <button data-dismiss="modal" class="btn btn-default" type="button">Close</button>
-        <button class="btn btn-danger" type="reset">Reset</button>
-        <button class="btn btn-success" type="submit">Save changes</button>
+        <button class="btn " type="reset">Reset</button>
+        <button class="btn btn-primary" type="submit">Save changes</button>
    
     {{Form::close()}}
     <a class="btn btn-danger pull-left" id="delete_doctor"><span class="glyphicon glyphicon-remove "></span>Delete</a>

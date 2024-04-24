@@ -29,15 +29,15 @@
 			<div class="col-lg-12">
 				<div class="panel panel-default">
 					<div class="panel-heading">Employee Table
-					<a class="btn btn-success pull-right" data-toggle="modal" href="{{route('employee.create')}}"><span class="glyphicon glyphicon-plus"></span>Add Employee</a></div>
+					<a class="btn btn-primary pull-right" data-toggle="modal" href="{{route('employee.create')}}"><span class="glyphicon glyphicon-plus"></span>Add Employee</a></div>
 					<div class="panel-body">
-						<table id="example" class="table table-bordered table-condensed" cellspacing="0" width="100%">
+						<table id="example" class="table" cellspacing="0" width="100%">
 						    <thead>
 				        <tr>
 				            <th data-sortable="true">ID</th>
 					        <th data-sortable="true">Name</th>
-					        <th data-sortable="true">Contact</th>
-					        <th data-sortable="true">Working Days</th>
+					        <th data-sortable="true">Phone</th>
+					        <th data-sortable="true">Working Day</th>
 					        <th data-sortable="true">In-time</th>
 					        <th data-sortable="true">Out-time</th>
 					        <th data-sortable="true">Type</th>
@@ -55,7 +55,7 @@
 				    		<td>{{$employee->out_time}}</td>
 				    		<td>{{$employee->type}}</td>
 				            <td>
-				             <a class="btn btn-sm btn-primary glyphicon glyphicon-eye-open" href="{{ route('employee.show',$employee->id) }}"></a>
+				             <a class="btn btn-sm btn-primary glyphicon glyphicon-eye-open" href="{{ route('employee.show',$employee->id) }}"> Profile</a>
 				            
 				        </tr>
 				    @endforeach

@@ -6,13 +6,12 @@
    <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ config('app.name', 'Clinic Management System') }}</title>
+    <title>{{ config('app.name', 'Lokanthali Wellness Clinic') }}</title>
     <link href="{{ asset('css/bootstrap.min.css')}}" rel="stylesheet" crossorigin="anonymous">
     <link href="{{ asset('css/datepicker3.css')}}" rel="stylesheet">
     <link href="{{ asset('css/bootstrap-table.css')}}" rel="stylesheet">
     <link href="{{ asset('css/styles.css')}}" rel="stylesheet">
-    <link href="{{ asset('css/fontawesome/css/all.css')}}" rel="stylesheet">
-    <!-- <link href="{{ asset('css/nepali.datepicker.min.css')}}" rel="stylesheet"> -->
+    <link href="{{ asset('css/nepali.datepicker.min.css')}}" rel="stylesheet">
     <link href="{{ asset('css/datatable.css')}}" rel="stylesheet">
     <link href="{{ asset('css/buttons.dataTables.css')}}" rel="stylesheet">
     <link href="{{ asset('css/select2.min.css')}}" rel="stylesheet">
@@ -153,16 +152,26 @@ $(document).ready(function() {
     </style>
 <body>
 
-<nav class="navbar navbar-inverse">
+   <nav style="background-color: #30a5ff" class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-    <a class="navbar-brand" href="{{route('dashboard.index')}}"><i class="fas fa-clinic-medical"></i> Clinic Management System</a>
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="{{route('dashboard.index')}}">Lokanthali Wellness Clinic</a>
     </div>
-    <ul class="nav navbar-nav">
-    <li class="{{ request()->is('/*') ? 'active' : '' }}"><a href="{{route('dashboard.index')}}"><i class="fas fa-home"></i> Dashboard</a></li>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav" style="margin-left: 400px; ">
+       <li class="active"><a href="{{route('dashboard.index')}}">Dashboard</a></li>
        @permission('department.index')
-        <li class="dropdown {{ request()->is('department*') || request()->is('service*') || request()->is('package') || request()->is('employee*') || request()->is('doctor*') || request()->is('invoice/report') ? 'active' : '' }}">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-users-cog"></i> Admin <span class="caret"></span></a>
+        <li class="dropdown active">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin <span class="caret"></span></a>
             <ul class="dropdown-menu">
             
                 <li><a href="{{route('department.index')}}">Departments</a></li>
@@ -181,8 +190,8 @@ $(document).ready(function() {
         @endpermission
 
         @permission('patient.index')
-        <li class="dropdown {{ request()->is('patient*') || request()->is('appointment*') ? 'active' : '' }}">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="fas fa-hospital-user"></i> Patient <span class="caret"></span></a>
+        <li class="dropdown active">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Patient <span class="caret"></span></a>
            <ul class="dropdown-menu">
                 <li><a href="{{route('patient.index')}}"> Patient</a></li>
                 <li><a href="{{route('appointment.index')}}"> Appointment</a></li>
@@ -191,8 +200,8 @@ $(document).ready(function() {
         @endpermission
 
         @permission('invoice.report')
-        <li class="dropdown {{ request()->is('account/*') ? 'active' : '' }}">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-file-medical-alt"></i> Report <span class="caret"></span></a>
+        <li class="dropdown active">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Report <span class="caret"></span></a>
            <ul class="dropdown-menu">
                 <li><a href="{{route('account.service')}}">Service Sale Report</a></li>
                 <li><a href="{{route('account.opd')}}"> Opd Sale Report</a></li>
@@ -202,8 +211,8 @@ $(document).ready(function() {
         </li>
         @endpermission
 
-        <li class="dropdown {{ request()->is('invoice*') || request()->is('opd*') || request()->is('package/sale') || request()->is('search/invoice') ? 'active' : '' }}">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-receipt"></i> Invoice/Bill <span class="caret"></span></a>
+        <li class="dropdown active">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">INVOICE/BILL <span class="caret"></span></a>
         <ul class="dropdown-menu">
          <li><a href="{{route('invoice.index')}}">Service Bill</a></li>
           <li><a href="{{route('opd.index')}}"> OPD Bill</a></li>
@@ -216,8 +225,8 @@ $(document).ready(function() {
         </li>
 
         @permission('test.index')
-        <li class="dropdown {{ request()->is('test') || request()->is('reference') || request()->is('haematology') || request()->is('biochemistry') || request()->is('immunology') || request()->is('microbiology') || request()->is('examination') || request()->is('stain') || request()->is('report')  ? 'active' : '' }}">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-flask"></i> Lab Test <span class="caret"></span></a>
+        <li class="dropdown active">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Lab Test <span class="caret"></span></a>
             <ul class="dropdown-menu">
                 <li><a href="{{route('test.index')}}"> Manage Test</a></li>
                 <li><a href="{{route('reference.index')}}"> Test References </a> </li>
@@ -232,8 +241,8 @@ $(document).ready(function() {
         </li>
         @endpermission
         @permission('hospital.setting')
-        <li class="dropdown {{ request()->is('user*') || request()->is('role*') || request()->is('setting') || request()->is('backup') ? 'active' : '' }}">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-tools"></i> Setting<span class="caret"></span></a>
+        <li class="dropdown active">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Setting<span class="caret"></span></a>
             <ul class="dropdown-menu">
             @permission('user.index')
                 <li><a href="{{route('user.index')}}"> Users</a></li>
@@ -247,9 +256,10 @@ $(document).ready(function() {
          </li>
          @endpermission
          </ul>
-         <ul class="nav navbar-nav navbar-right">
+
+        <ul class="nav navbar-nav navbar-right">
             <li class="dropdown active">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{Auth::user()->name}} <span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{Auth::user()->uname}} <span class="caret"></span></a>
             <ul class="dropdown-menu" >
                 <li><a id="password_change">Change Password</a></li>
                 <li> <a href="{{ route('logout') }}"onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> Logout</a>
@@ -260,9 +270,9 @@ $(document).ready(function() {
             </ul>
         </li>
         </ul>
-  </div>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
 </nav>
-
 
 @if (count($errors))
 <div class="alert alert-success alert-block">

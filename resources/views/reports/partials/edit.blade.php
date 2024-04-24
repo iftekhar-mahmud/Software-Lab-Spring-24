@@ -15,7 +15,7 @@
       	</div>
       	</div>
 			<div class="modal-footer">
-				<button type="submit" class="btn btn-success edit" >
+				<button type="submit" class="btn btn-primary edit" >
 					<span id="footer_action_button" class='glyphicon glyphicon-check'> Update</span>
 				</button>
 				

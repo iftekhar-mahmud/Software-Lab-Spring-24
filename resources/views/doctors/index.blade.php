@@ -35,7 +35,7 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">Doctor Table</div>
 					<div class="panel-body">
-						<table class="table table-bordered table-condensed">
+						<table class="table ">
 						    <thead>
 						    <tr>
 						        <th>ID</th>
@@ -55,11 +55,11 @@
 				            <td>{{ $doctor->employee->first_name}} {{$doctor->employee->middle_name}} {{$doctor->employee->last_name}}</td>
 				            <td>{{ $doctor->employee->phone}}</td>
 				            <td>{{$doctor->employee->department->name}}</td>
-				            <td>${{$doctor->fee}}</td>
+				            <td>Rs.{{$doctor->fee}}</td>
 				           
 				    		
 				            <td>
-				            <a class="btn-sm btn-primary" href="{{ route('doctor.show',$doctor->id) }}"> <span class= "glyphicon glyphicon-eye-open"></span> View </a>  
+				            <a class="btn-sm btn-primary" href="{{ route('doctor.show',$doctor->id) }}"> <span class= "glyphicon glyphicon-eye-open">Profile</span></a>  
 						    </td>
 				        </tr>
 				    @endforeach
@@ -87,7 +87,7 @@
 						 	<input type="number" name="fee" class="form-control" required="">
 					</div>
 					<div class=" form-group">
-							<label>OPD Charge:</label>
+							<label>Patient Charge:</label>
 							<input type="number" name="opd_charge" class="form-control" required="">
 					</div>
 					<div class="form-group">
@@ -97,8 +97,8 @@
       				</div>
       			<div class="panel-footer">
 				
-           		<button class="btn btn-success" type="submit"><span class='glyphicon glyphicon-plus'></span>Add</button>
-           		<button class="btn btn-danger pull-right" type="reset">Reset</button>
+           		<button class="btn btn-primary" type="submit"><span class='glyphicon glyphicon-plus'></span>Add</button>
+           		<button class="btn pull-right" type="reset">Reset</button>
            		</div>
            		{!! Form::close()!!}
 				</div>

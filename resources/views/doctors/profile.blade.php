@@ -55,8 +55,7 @@
 <div class="col-md-12">
 <div class="panel panel-default">
 <div class="panel-heading">Doctor OPD Report
-			<!-- <a class="btn btn-sm btn-success pull-right" data-toggle="modal" href="#addAppointment"><span class="glyphicon glyphicon-plus"></span>ADD OPD</a> -->
-		</div>
+			<a class="btn btn-sm btn-primary pull-right" data-toggle="modal" href="#addAppointment"><span class="glyphicon glyphicon-plus"></span>ADD OPD</a></div>
 			<div class="panel-body">
 			@if($doctor->opd_sales()->count())
 			<table data-toggle="table" data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc">
@@ -75,7 +74,7 @@
 			<td>{{$i++}}</td>
 			<td>{{$sales->invoice->patient->first_name}} {{$sales->invoice->patient->middle_name}} {{$sales->invoice->patient->last_name}}</td>
 			<td>{{$doctor->fee}}</td>
-			<td>Complete</td>
+			<td>COmplete</td>
 			</tr>
 			@endforeach
 

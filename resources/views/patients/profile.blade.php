@@ -61,7 +61,7 @@
 				<a class="btn btn-primary pull-right" data-toggle="modal" href="#addAppointment"><span class="glyphicon glyphicon-plus"></span>Add Appointment</a></div>
 				<div class="panel-body">
 				@if($patient->appointments->count())
-				<table id="example" class="table table-bordered table-condensed" cellspacing="0" width="100%">
+				<table id="example" class="table" cellspacing="0" width="100%">
 				   	 	<thead>
 				        <tr>
 				        	<th data-sortable="true">ID</th>
@@ -87,7 +87,7 @@
 					    @if($appointment->status)
 					   	<a class="btn-sm btn-success" href="{{ route('appointment.edit',$appointment->id) }}"><span class=" glyphicon glyphicon-ok"></span> Complete</a>	
 						@else
-						<a class="btn-sm btn-warning" href="{{ route('appointment.edit',$appointment->id) }}"><span class=" glyphicon glyphicon-refresh"> </span> Pending</a>
+						<a class="btn-sm btn-warning" href="{{ route('appointment.edit',$appointment->id) }}"><span class=" glyphicon glyphicon-remove"> </span> Pending</a>
 						@endif
 					   </td>
 					   <td> <a class="btn-sm btn-info" href="{{ route('appointment.index')}}"><span class=" glyphicon glyphicon-eye-open"> </span> View all..</a>
@@ -98,7 +98,7 @@
 					    </tbody>
 					</table>
 					@else
-					<h3>No records..</h3>
+					<h1>No record Found..</h1>
 					@endif
 				</div>
 			</div>
@@ -109,7 +109,7 @@
 				<div class="panel-heading">Patient Report</div>
 				<div class="panel-body">
 				@if($patient->reports->count())
-				<table id="example" class="table table-bordered table-condensed" cellspacing="0" width="100%">
+				<table id="example" class="table" cellspacing="0" width="100%">
 				   	 	<thead>
 				        <tr>
 				        	<th data-sortable="true">ID</th>
@@ -127,7 +127,7 @@
 					   @if($report->status)
 					    <td><span class="btn-sm btn-primary glyphicon glyphicon-ok">  Complete</span> </td>
 					    @else
-					    <td><span class="btn-sm btn-warning glyphicon glyphicon-refresh">Pending </span> </td>
+					    <td><span class="btn-sm btn-warning glyphicon glyphicon-remove">Pending </span> </td>
 					    @endif
 					   @if($report->report)
 					    <td><a href="{{url('/reports/'.$report->report) }}" class="btn-sm btn-success" target="_blank"><span class=" glyphicon glyphicon-print">Print</a></td>
@@ -140,7 +140,7 @@
 					    </tbody>
 					</table>
 					@else
-					<h3>No records..</h3>
+					<h1>No record Found..</h1>
 					@endif
 				</div>
 			</div>
