@@ -21,9 +21,7 @@ class CreateAppointmentsTable extends Migration
             $table->timestamp('appointment_date')->nullable();
             $table->boolean('status')->default(0);
             $table->integer('patient_id')->unsigned();
-            $table->foreign('patient_id')->references('id')->on('patients');
             $table->integer('doctor_id')->unsigned();
-
             $table->timestamps();
 
         });

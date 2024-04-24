@@ -1,20 +1,21 @@
 -- phpMyAdmin SQL Dump
--- version 4.2.11
--- http://www.phpmyadmin.net
+-- version 5.0.2
+-- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 16, 2024 at 02:09 AM
--- Server version: 5.6.21
--- PHP Version: 7.4.12
+-- Generation Time: Feb 27, 2024 at 05:16 PM
+-- Server version: 10.4.13-MariaDB
+-- PHP Version: 7.4.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `climslara`
@@ -26,19 +27,19 @@ SET time_zone = "+00:00";
 -- Table structure for table `appointments`
 --
 
-CREATE TABLE IF NOT EXISTS `appointments` (
-`id` int(10) unsigned NOT NULL,
+CREATE TABLE `appointments` (
+  `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `time` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `appointment_date` timestamp NULL DEFAULT NULL,
-  `status` tinyint(1) NOT NULL DEFAULT '0',
-  `patient_id` int(10) unsigned NOT NULL,
-  `doctor_id` int(10) unsigned NOT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT 0,
+  `patient_id` int(10) UNSIGNED NOT NULL,
+  `doctor_id` int(10) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `appointments`
@@ -59,12 +60,12 @@ INSERT INTO `appointments` (`id`, `name`, `description`, `time`, `appointment_da
 -- Table structure for table `departments`
 --
 
-CREATE TABLE IF NOT EXISTS `departments` (
-`id` int(10) unsigned NOT NULL,
+CREATE TABLE `departments` (
+  `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `departments`
@@ -99,15 +100,15 @@ INSERT INTO `departments` (`id`, `name`, `created_at`, `updated_at`) VALUES
 -- Table structure for table `doctors`
 --
 
-CREATE TABLE IF NOT EXISTS `doctors` (
-`id` int(10) unsigned NOT NULL,
-  `employee_id` int(10) unsigned NOT NULL,
+CREATE TABLE `doctors` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `employee_id` int(10) UNSIGNED NOT NULL,
   `fee` double(8,2) NOT NULL,
   `opd_charge` double(8,2) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `doctors`
@@ -126,14 +127,14 @@ INSERT INTO `doctors` (`id`, `employee_id`, `fee`, `opd_charge`, `created_at`, `
 -- Table structure for table `doctor_referreds`
 --
 
-CREATE TABLE IF NOT EXISTS `doctor_referreds` (
-`id` int(10) unsigned NOT NULL,
-  `doctor_id` int(10) unsigned NOT NULL,
-  `invoice_id` int(10) unsigned NOT NULL,
+CREATE TABLE `doctor_referreds` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `doctor_id` int(10) UNSIGNED NOT NULL,
+  `invoice_id` int(10) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `doctor_referreds`
@@ -141,7 +142,8 @@ CREATE TABLE IF NOT EXISTS `doctor_referreds` (
 
 INSERT INTO `doctor_referreds` (`id`, `doctor_id`, `invoice_id`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (1, 2, 6, '2023-12-30 04:36:49', '2023-12-30 04:36:49', NULL),
-(2, 6, 2, '2024-01-11 21:43:09', '2024-01-11 21:43:09', NULL);
+(2, 6, 2, '2024-01-11 21:43:09', '2024-01-11 21:43:09', NULL),
+(3, 2, 5, '2024-02-25 10:17:51', '2024-02-25 10:17:51', NULL);
 
 -- --------------------------------------------------------
 
@@ -149,8 +151,8 @@ INSERT INTO `doctor_referreds` (`id`, `doctor_id`, `invoice_id`, `created_at`, `
 -- Table structure for table `employees`
 --
 
-CREATE TABLE IF NOT EXISTS `employees` (
-`id` int(10) unsigned NOT NULL,
+CREATE TABLE `employees` (
+  `id` int(10) UNSIGNED NOT NULL,
   `first_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `middle_name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `last_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -165,11 +167,11 @@ CREATE TABLE IF NOT EXISTS `employees` (
   `in_time` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `out_time` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `type` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `department_id` int(10) unsigned NOT NULL,
+  `department_id` int(10) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `employees`
@@ -188,9 +190,9 @@ INSERT INTO `employees` (`id`, `first_name`, `middle_name`, `last_name`, `email`
 -- Table structure for table `examination_results`
 --
 
-CREATE TABLE IF NOT EXISTS `examination_results` (
-`id` int(10) unsigned NOT NULL,
-  `test_report_id` int(10) unsigned NOT NULL,
+CREATE TABLE `examination_results` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `test_report_id` int(10) UNSIGNED NOT NULL,
   `macroscopic_result` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `microscopic_result` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `result` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -204,8 +206,8 @@ CREATE TABLE IF NOT EXISTS `examination_results` (
 -- Table structure for table `hospitals`
 --
 
-CREATE TABLE IF NOT EXISTS `hospitals` (
-`id` int(10) unsigned NOT NULL,
+CREATE TABLE `hospitals` (
+  `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `slogan` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `logo` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -224,14 +226,14 @@ CREATE TABLE IF NOT EXISTS `hospitals` (
   `deleted_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `hospitals`
 --
 
 INSERT INTO `hospitals` (`id`, `name`, `slogan`, `logo`, `address`, `contact`, `email`, `pan_no`, `registration_no`, `invoice_message`, `website`, `description`, `invoice_prefix`, `patient_prefix`, `tax_type`, `tax_percent`, `deleted_at`, `created_at`, `updated_at`) VALUES
-(1, 'Clinic Management System', 'Enhancing Life', 'uploads/logo.png', '789 Demo Address', '+777 7777777777', 'aclinic@mail.com', '123', '12345', 'Invoice', 'codeastro.com', 'Nothing about us', 'LWC-', 'LWC-', 'Health Tax', 5, NULL, NULL, '2023-12-30 03:54:03');
+(1, 'E-Clinic Management System', 'Enhancing Life', 'uploads/logo.png', '789 Demo Address', '+777 7777777777', 'aclinic@mail.com', '123', '12345', 'Invoice', 'demo.com', 'Nothing about us', 'LWC-', 'LWC-', 'Health Tax', 5, NULL, NULL, '2024-02-25 10:36:17');
 
 -- --------------------------------------------------------
 
@@ -239,9 +241,9 @@ INSERT INTO `hospitals` (`id`, `name`, `slogan`, `logo`, `address`, `contact`, `
 -- Table structure for table `invoices`
 --
 
-CREATE TABLE IF NOT EXISTS `invoices` (
-`id` int(10) unsigned NOT NULL,
-  `user_id` int(10) unsigned NOT NULL,
+CREATE TABLE `invoices` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `user_id` int(10) UNSIGNED NOT NULL,
   `invoice_no` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `payment_type` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Cash',
   `comment` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -250,12 +252,12 @@ CREATE TABLE IF NOT EXISTS `invoices` (
   `tax_amount` double(28,21) NOT NULL,
   `discount` double(8,2) DEFAULT NULL,
   `cash` double(8,2) DEFAULT NULL,
-  `patient_id` int(10) unsigned NOT NULL,
-  `status` tinyint(1) NOT NULL DEFAULT '1',
+  `patient_id` int(10) UNSIGNED NOT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT 1,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `invoices`
@@ -265,7 +267,8 @@ INSERT INTO `invoices` (`id`, `user_id`, `invoice_no`, `payment_type`, `comment`
 (1, 3, 'LWC-1', 'Cash', NULL, 126.000000000000000000000, 120.000000000000000000000, 6.000000000000000000000, 0.00, 130.00, 3, 1, '2024-01-11 21:06:49', '2024-01-11 21:06:49', NULL),
 (2, 3, 'LWC-2', 'Credit', NULL, 200.000000000000000000000, 190.476190476190480000000, 9.523809523809524000000, 0.00, 200.00, 10, 1, '2024-01-11 21:43:08', '2024-01-11 21:43:08', NULL),
 (3, 3, 'LWC-3', 'Cash', NULL, 63.000000000000000000000, 60.000000000000000000000, 3.000000000000000000000, 0.00, 100.00, 10, 1, '2024-01-11 21:44:37', '2024-01-11 21:44:37', NULL),
-(4, 3, 'LWC-4', 'Credit', NULL, 271.950000000000000000000, 259.000000000000000000000, 12.950000000000000000000, 0.00, 272.00, 10, 1, '2024-01-11 21:46:59', '2024-01-11 21:46:59', NULL);
+(4, 3, 'LWC-4', 'Credit', NULL, 271.950000000000000000000, 259.000000000000000000000, 12.950000000000000000000, 0.00, 272.00, 10, 1, '2024-01-11 21:46:59', '2024-01-11 21:46:59', NULL),
+(5, 3, 'LWC-5', 'Cash', NULL, 150.000000000000000000000, 142.857142857142860000000, 7.142857142857143000000, NULL, 300.00, 1, 1, '2024-02-25 10:17:51', '2024-02-25 10:17:51', NULL);
 
 -- --------------------------------------------------------
 
@@ -273,13 +276,13 @@ INSERT INTO `invoices` (`id`, `user_id`, `invoice_no`, `payment_type`, `comment`
 -- Table structure for table `invoice_returns`
 --
 
-CREATE TABLE IF NOT EXISTS `invoice_returns` (
-`id` int(10) unsigned NOT NULL,
-  `invoice_id` int(10) unsigned NOT NULL,
+CREATE TABLE `invoice_returns` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `invoice_id` int(10) UNSIGNED NOT NULL,
   `return_amount` double(8,2) NOT NULL,
   `return_reason` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `user_id` int(10) unsigned NOT NULL,
-  `status` tinyint(1) NOT NULL DEFAULT '1',
+  `user_id` int(10) UNSIGNED NOT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT 1,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
@@ -291,11 +294,11 @@ CREATE TABLE IF NOT EXISTS `invoice_returns` (
 -- Table structure for table `migrations`
 --
 
-CREATE TABLE IF NOT EXISTS `migrations` (
-`id` int(10) unsigned NOT NULL,
+CREATE TABLE `migrations` (
+  `id` int(10) UNSIGNED NOT NULL,
   `migration` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `migrations`
@@ -344,18 +347,18 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 -- Table structure for table `opd_sales`
 --
 
-CREATE TABLE IF NOT EXISTS `opd_sales` (
-`id` int(10) unsigned NOT NULL,
+CREATE TABLE `opd_sales` (
+  `id` int(10) UNSIGNED NOT NULL,
   `opd_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `doctor_id` int(10) unsigned NOT NULL,
-  `invoice_id` int(10) unsigned NOT NULL,
+  `doctor_id` int(10) UNSIGNED NOT NULL,
+  `invoice_id` int(10) UNSIGNED NOT NULL,
   `doctor_fee` double(8,2) NOT NULL,
   `opd_charge` double(8,2) NOT NULL,
-  `status` tinyint(1) NOT NULL DEFAULT '0',
+  `status` tinyint(1) NOT NULL DEFAULT 0,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `opd_sales`
@@ -371,15 +374,15 @@ INSERT INTO `opd_sales` (`id`, `opd_name`, `doctor_id`, `invoice_id`, `doctor_fe
 -- Table structure for table `packages`
 --
 
-CREATE TABLE IF NOT EXISTS `packages` (
-`id` int(10) unsigned NOT NULL,
+CREATE TABLE `packages` (
+  `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `price` double(8,2) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `packages`
@@ -395,16 +398,16 @@ INSERT INTO `packages` (`id`, `name`, `description`, `price`, `created_at`, `upd
 -- Table structure for table `package_sales`
 --
 
-CREATE TABLE IF NOT EXISTS `package_sales` (
-`id` int(10) unsigned NOT NULL,
-  `package_id` int(10) unsigned NOT NULL,
-  `invoice_id` int(10) unsigned NOT NULL,
-  `patient_id` int(10) unsigned NOT NULL,
+CREATE TABLE `package_sales` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `package_id` int(10) UNSIGNED NOT NULL,
+  `invoice_id` int(10) UNSIGNED NOT NULL,
+  `patient_id` int(10) UNSIGNED NOT NULL,
   `package_price` double(8,2) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `package_sales`
@@ -419,14 +422,14 @@ INSERT INTO `package_sales` (`id`, `package_id`, `invoice_id`, `patient_id`, `pa
 -- Table structure for table `package_tests`
 --
 
-CREATE TABLE IF NOT EXISTS `package_tests` (
-`id` int(10) unsigned NOT NULL,
-  `package_id` int(10) unsigned NOT NULL,
-  `test_id` int(10) unsigned NOT NULL,
+CREATE TABLE `package_tests` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `package_id` int(10) UNSIGNED NOT NULL,
+  `test_id` int(10) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `package_tests`
@@ -442,7 +445,7 @@ INSERT INTO `package_tests` (`id`, `package_id`, `test_id`, `created_at`, `updat
 -- Table structure for table `password_resets`
 --
 
-CREATE TABLE IF NOT EXISTS `password_resets` (
+CREATE TABLE `password_resets` (
   `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `token` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
@@ -454,8 +457,8 @@ CREATE TABLE IF NOT EXISTS `password_resets` (
 -- Table structure for table `patients`
 --
 
-CREATE TABLE IF NOT EXISTS `patients` (
-`id` int(10) unsigned NOT NULL,
+CREATE TABLE `patients` (
+  `id` int(10) UNSIGNED NOT NULL,
   `first_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `middle_name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `last_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -477,7 +480,7 @@ CREATE TABLE IF NOT EXISTS `patients` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `patients`
@@ -501,14 +504,14 @@ INSERT INTO `patients` (`id`, `first_name`, `middle_name`, `last_name`, `email`,
 -- Table structure for table `permissions`
 --
 
-CREATE TABLE IF NOT EXISTS `permissions` (
-`id` int(10) unsigned NOT NULL,
+CREATE TABLE `permissions` (
+  `id` int(10) UNSIGNED NOT NULL,
   `object` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `action` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=113 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `permissions`
@@ -634,13 +637,13 @@ INSERT INTO `permissions` (`id`, `object`, `action`, `name`, `created_at`, `upda
 -- Table structure for table `permission_role`
 --
 
-CREATE TABLE IF NOT EXISTS `permission_role` (
-`id` int(10) unsigned NOT NULL,
+CREATE TABLE `permission_role` (
+  `id` int(10) UNSIGNED NOT NULL,
   `role_id` int(11) NOT NULL,
   `permission_id` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=283 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `permission_role`
@@ -928,7 +931,20 @@ INSERT INTO `permission_role` (`id`, `role_id`, `permission_id`, `created_at`, `
 (279, 4, 106, '2017-07-15 12:32:13', '2017-07-15 12:32:13'),
 (280, 4, 110, '2017-07-15 12:32:13', '2017-07-15 12:32:13'),
 (281, 4, 111, '2017-07-15 12:32:13', '2017-07-15 12:32:13'),
-(282, 4, 112, '2017-07-15 12:32:13', '2017-07-15 12:32:13');
+(282, 4, 112, '2017-07-15 12:32:13', '2017-07-15 12:32:13'),
+(283, 5, 74, '2024-02-26 15:53:02', '2024-02-26 15:53:02'),
+(284, 5, 75, '2024-02-26 15:53:02', '2024-02-26 15:53:02'),
+(285, 5, 76, '2024-02-26 15:53:02', '2024-02-26 15:53:02'),
+(286, 5, 77, '2024-02-26 15:53:02', '2024-02-26 15:53:02'),
+(287, 5, 78, '2024-02-26 15:53:02', '2024-02-26 15:53:02'),
+(288, 5, 85, '2024-02-26 15:53:02', '2024-02-26 15:53:02'),
+(289, 5, 86, '2024-02-26 15:53:02', '2024-02-26 15:53:02'),
+(290, 5, 89, '2024-02-26 15:53:02', '2024-02-26 15:53:02'),
+(291, 5, 90, '2024-02-26 15:53:02', '2024-02-26 15:53:02'),
+(292, 5, 91, '2024-02-26 15:53:02', '2024-02-26 15:53:02'),
+(293, 5, 110, '2024-02-26 15:53:02', '2024-02-26 15:53:02'),
+(294, 5, 111, '2024-02-26 15:53:02', '2024-02-26 15:53:02'),
+(295, 5, 112, '2024-02-26 15:53:02', '2024-02-26 15:53:02');
 
 -- --------------------------------------------------------
 
@@ -936,10 +952,10 @@ INSERT INTO `permission_role` (`id`, `role_id`, `permission_id`, `created_at`, `
 -- Table structure for table `reference_results`
 --
 
-CREATE TABLE IF NOT EXISTS `reference_results` (
-`id` int(10) unsigned NOT NULL,
-  `test_report_id` int(10) unsigned NOT NULL,
-  `test_reference_id` int(10) unsigned NOT NULL,
+CREATE TABLE `reference_results` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `test_report_id` int(10) UNSIGNED NOT NULL,
+  `test_reference_id` int(10) UNSIGNED NOT NULL,
   `result` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `flag` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -952,17 +968,17 @@ CREATE TABLE IF NOT EXISTS `reference_results` (
 -- Table structure for table `reports`
 --
 
-CREATE TABLE IF NOT EXISTS `reports` (
-`id` int(10) unsigned NOT NULL,
-  `patient_id` int(10) unsigned NOT NULL,
+CREATE TABLE `reports` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `patient_id` int(10) UNSIGNED NOT NULL,
   `doctor_id` int(11) DEFAULT NULL,
   `report` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `result` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `status` tinyint(1) NOT NULL DEFAULT '0',
+  `status` tinyint(1) NOT NULL DEFAULT 0,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `reports`
@@ -977,13 +993,13 @@ INSERT INTO `reports` (`id`, `patient_id`, `doctor_id`, `report`, `result`, `sta
 -- Table structure for table `roles`
 --
 
-CREATE TABLE IF NOT EXISTS `roles` (
-`id` int(10) unsigned NOT NULL,
+CREATE TABLE `roles` (
+  `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `roles`
@@ -993,7 +1009,8 @@ INSERT INTO `roles` (`id`, `name`, `description`, `created_at`, `updated_at`) VA
 (1, 'Superadmin', 'Role for Super administrator', '2017-07-11 03:27:25', '2017-07-11 03:27:25'),
 (2, 'user', 'user', '2017-07-15 12:27:38', '2017-07-15 12:27:38'),
 (3, 'lab', 'lab', '2017-07-15 12:29:37', '2017-07-15 12:29:37'),
-(4, 'admin', 'admin', '2017-07-15 12:32:13', '2017-07-15 12:32:13');
+(4, 'admin', 'admin', '2017-07-15 12:32:13', '2017-07-15 12:32:13'),
+(5, 'Testrole', 'test role description', '2024-02-26 15:53:02', '2024-02-26 15:53:02');
 
 -- --------------------------------------------------------
 
@@ -1001,14 +1018,14 @@ INSERT INTO `roles` (`id`, `name`, `description`, `created_at`, `updated_at`) VA
 -- Table structure for table `services`
 --
 
-CREATE TABLE IF NOT EXISTS `services` (
-`id` int(10) unsigned NOT NULL,
+CREATE TABLE `services` (
+  `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `amount` double(20,15) NOT NULL,
-  `department_id` int(10) unsigned NOT NULL,
+  `department_id` int(10) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=182 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `services`
@@ -1195,24 +1212,25 @@ INSERT INTO `services` (`id`, `name`, `amount`, `department_id`, `created_at`, `
 -- Table structure for table `service_sales`
 --
 
-CREATE TABLE IF NOT EXISTS `service_sales` (
-`id` int(10) unsigned NOT NULL,
+CREATE TABLE `service_sales` (
+  `id` int(10) UNSIGNED NOT NULL,
   `service_id` int(11) NOT NULL,
   `service_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `amount` double(8,2) NOT NULL,
-  `invoice_id` int(10) unsigned NOT NULL,
-  `status` tinyint(1) NOT NULL DEFAULT '1',
+  `invoice_id` int(10) UNSIGNED NOT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT 1,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `service_sales`
 --
 
 INSERT INTO `service_sales` (`id`, `service_id`, `service_name`, `amount`, `invoice_id`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 45, 'Total Cholesterol', 190.48, 2, 1, '2024-01-11 21:43:09', '2024-01-11 21:43:09', NULL);
+(1, 45, 'Total Cholesterol', 190.48, 2, 1, '2024-01-11 21:43:09', '2024-01-11 21:43:09', NULL),
+(2, 1, 'Absolute Basophil Count', 142.86, 5, 1, '2024-02-25 10:17:51', '2024-02-25 10:17:51', NULL);
 
 -- --------------------------------------------------------
 
@@ -1220,8 +1238,8 @@ INSERT INTO `service_sales` (`id`, `service_id`, `service_name`, `amount`, `invo
 -- Table structure for table `temps`
 --
 
-CREATE TABLE IF NOT EXISTS `temps` (
-`id` int(10) unsigned NOT NULL,
+CREATE TABLE `temps` (
+  `id` int(10) UNSIGNED NOT NULL,
   `service_id` int(11) NOT NULL,
   `service_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `amount` double(28,20) NOT NULL,
@@ -1235,16 +1253,16 @@ CREATE TABLE IF NOT EXISTS `temps` (
 -- Table structure for table `tests`
 --
 
-CREATE TABLE IF NOT EXISTS `tests` (
-`id` int(10) unsigned NOT NULL,
-  `service_id` int(10) unsigned NOT NULL,
+CREATE TABLE `tests` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `service_id` int(10) UNSIGNED NOT NULL,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `report_type` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `tests`
@@ -1252,7 +1270,11 @@ CREATE TABLE IF NOT EXISTS `tests` (
 
 INSERT INTO `tests` (`id`, `service_id`, `name`, `report_type`, `description`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (1, 82, 'Haemoglobin (Hb)', 'haematology', 'TTTTEEESST', '2023-12-30 04:48:20', '2023-12-30 04:48:20', NULL),
-(2, 77, 'Blood Glucose PP', 'examination', 'demo demo', '2024-01-11 20:41:05', '2024-01-11 20:41:05', NULL);
+(2, 77, 'Blood Glucose PP', 'examination', 'demo demo', '2024-01-11 20:41:05', '2024-01-11 20:41:05', NULL),
+(3, 9, 'AFB ( Acid fast) )Stain', 'stain', 'test500', '2024-02-25 10:21:19', '2024-02-25 10:21:19', NULL),
+(4, 118, 'Phosphorus', 'immunology', 'Phosphorus test', '2024-02-26 15:47:09', '2024-02-26 15:47:09', NULL),
+(5, 180, 'Hepatitis A IgM antibody (HEV IgM)', 'microbiology', 'test micro', '2024-02-26 15:48:43', '2024-02-26 15:48:43', NULL),
+(6, 76, 'Glucose GTT', 'stain', NULL, '2024-02-26 15:50:23', '2024-02-26 15:50:23', NULL);
 
 -- --------------------------------------------------------
 
@@ -1260,12 +1282,12 @@ INSERT INTO `tests` (`id`, `service_id`, `name`, `report_type`, `description`, `
 -- Table structure for table `test_antibiotics`
 --
 
-CREATE TABLE IF NOT EXISTS `test_antibiotics` (
-`id` int(10) unsigned NOT NULL,
+CREATE TABLE `test_antibiotics` (
+  `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `test_antibiotics`
@@ -1294,8 +1316,8 @@ INSERT INTO `test_antibiotics` (`id`, `name`, `created_at`, `updated_at`) VALUES
 -- Table structure for table `test_antibiotic_results`
 --
 
-CREATE TABLE IF NOT EXISTS `test_antibiotic_results` (
-`id` int(10) unsigned NOT NULL,
+CREATE TABLE `test_antibiotic_results` (
+  `id` int(10) UNSIGNED NOT NULL,
   `test_report_id` int(11) NOT NULL,
   `test_antibiotic_id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `result` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -1309,14 +1331,22 @@ CREATE TABLE IF NOT EXISTS `test_antibiotic_results` (
 -- Table structure for table `test_examinations`
 --
 
-CREATE TABLE IF NOT EXISTS `test_examinations` (
-`id` int(10) unsigned NOT NULL,
-  `test_id` int(10) unsigned NOT NULL,
+CREATE TABLE `test_examinations` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `test_id` int(10) UNSIGNED NOT NULL,
   `macroscopics` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `microscopics` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `test_examinations`
+--
+
+INSERT INTO `test_examinations` (`id`, `test_id`, `macroscopics`, `microscopics`, `created_at`, `updated_at`) VALUES
+(1, 2, 'a:1:{i:0;N;}', 'a:2:{i:0;s:8:\"Test1010\";i:1;N;}', '2024-02-25 10:18:55', '2024-02-25 10:18:55'),
+(2, 2, 'a:2:{i:0;s:15:\"test macocopies\";i:1;N;}', 'a:2:{i:0;s:12:\"test micro 2\";i:1;N;}', '2024-02-26 15:49:45', '2024-02-26 15:49:45');
 
 -- --------------------------------------------------------
 
@@ -1324,17 +1354,17 @@ CREATE TABLE IF NOT EXISTS `test_examinations` (
 -- Table structure for table `test_references`
 --
 
-CREATE TABLE IF NOT EXISTS `test_references` (
-`id` int(10) unsigned NOT NULL,
-  `test_id` int(10) unsigned DEFAULT NULL,
+CREATE TABLE `test_references` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `test_id` int(10) UNSIGNED DEFAULT NULL,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `unit` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `range` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `parent_id` int(10) unsigned DEFAULT NULL,
+  `parent_id` int(10) UNSIGNED DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `test_references`
@@ -1382,15 +1412,15 @@ INSERT INTO `test_references` (`id`, `test_id`, `name`, `unit`, `range`, `parent
 -- Table structure for table `test_reference_results`
 --
 
-CREATE TABLE IF NOT EXISTS `test_reference_results` (
-`id` int(10) unsigned NOT NULL,
+CREATE TABLE `test_reference_results` (
+  `id` int(10) UNSIGNED NOT NULL,
   `test_report_id` int(11) NOT NULL,
   `test_reference_id` int(11) NOT NULL,
   `result` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `flag` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `test_reference_results`
@@ -1406,17 +1436,17 @@ INSERT INTO `test_reference_results` (`id`, `test_report_id`, `test_reference_id
 -- Table structure for table `test_reports`
 --
 
-CREATE TABLE IF NOT EXISTS `test_reports` (
-`id` int(10) unsigned NOT NULL,
-  `report_id` int(10) unsigned NOT NULL,
-  `test_id` int(10) unsigned NOT NULL,
+CREATE TABLE `test_reports` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `report_id` int(10) UNSIGNED NOT NULL,
+  `test_id` int(10) UNSIGNED NOT NULL,
   `report_type` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `sample` tinyint(1) NOT NULL DEFAULT '0',
-  `status` tinyint(1) NOT NULL DEFAULT '0',
+  `sample` tinyint(1) NOT NULL DEFAULT 0,
+  `status` tinyint(1) NOT NULL DEFAULT 0,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `test_reports`
@@ -1432,15 +1462,15 @@ INSERT INTO `test_reports` (`id`, `report_id`, `test_id`, `report_type`, `sample
 -- Table structure for table `test_results`
 --
 
-CREATE TABLE IF NOT EXISTS `test_results` (
-`id` int(10) unsigned NOT NULL,
-  `test_report_id` int(10) unsigned NOT NULL,
-  `result` text COLLATE utf8mb4_unicode_ci,
-  `status` tinyint(1) NOT NULL DEFAULT '0',
+CREATE TABLE `test_results` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `test_report_id` int(10) UNSIGNED NOT NULL,
+  `result` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT 0,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `test_results`
@@ -1456,13 +1486,20 @@ INSERT INTO `test_results` (`id`, `test_report_id`, `result`, `status`, `created
 -- Table structure for table `test_stains`
 --
 
-CREATE TABLE IF NOT EXISTS `test_stains` (
-`id` int(10) unsigned NOT NULL,
-  `test_id` int(10) unsigned NOT NULL,
+CREATE TABLE `test_stains` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `test_id` int(10) UNSIGNED NOT NULL,
   `test_names` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `test_stains`
+--
+
+INSERT INTO `test_stains` (`id`, `test_id`, `test_names`, `created_at`, `updated_at`) VALUES
+(1, 3, 'a:1:{i:0;s:7:\"testest\";}', '2024-02-25 10:21:28', '2024-02-25 10:21:28');
 
 -- --------------------------------------------------------
 
@@ -1470,13 +1507,20 @@ CREATE TABLE IF NOT EXISTS `test_stains` (
 -- Table structure for table `test_test_antibiotic`
 --
 
-CREATE TABLE IF NOT EXISTS `test_test_antibiotic` (
-`id` int(10) unsigned NOT NULL,
+CREATE TABLE `test_test_antibiotic` (
+  `id` int(10) UNSIGNED NOT NULL,
   `test_id` int(11) NOT NULL,
   `test_antibiotic_id` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `test_test_antibiotic`
+--
+
+INSERT INTO `test_test_antibiotic` (`id`, `test_id`, `test_antibiotic_id`, `created_at`, `updated_at`) VALUES
+(2, 5, 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1484,14 +1528,14 @@ CREATE TABLE IF NOT EXISTS `test_test_antibiotic` (
 -- Table structure for table `test_test_reference`
 --
 
-CREATE TABLE IF NOT EXISTS `test_test_reference` (
-`id` int(10) unsigned NOT NULL,
+CREATE TABLE `test_test_reference` (
+  `id` int(10) UNSIGNED NOT NULL,
   `test_id` int(11) NOT NULL,
   `test_reference_id` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=60 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `test_test_reference`
@@ -1514,7 +1558,6 @@ INSERT INTO `test_test_reference` (`id`, `test_id`, `test_reference_id`, `create
 (46, 16, 53, NULL, NULL, NULL),
 (47, 3, 5, NULL, NULL, NULL),
 (48, 13, 49, NULL, NULL, NULL),
-(49, 4, 59, NULL, NULL, NULL),
 (50, 175, 25, NULL, NULL, NULL),
 (51, 45, 30, NULL, NULL, NULL),
 (52, 56, 21, NULL, NULL, NULL),
@@ -1524,7 +1567,9 @@ INSERT INTO `test_test_reference` (`id`, `test_id`, `test_reference_id`, `create
 (56, 181, 42, NULL, NULL, NULL),
 (57, 183, 61, NULL, NULL, NULL),
 (58, 1, 36, NULL, NULL, NULL),
-(59, 1, 37, NULL, NULL, NULL);
+(59, 1, 37, NULL, NULL, NULL),
+(60, 4, 26, NULL, NULL, NULL),
+(61, 4, 49, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1532,8 +1577,8 @@ INSERT INTO `test_test_reference` (`id`, `test_id`, `test_reference_id`, `create
 -- Table structure for table `users`
 --
 
-CREATE TABLE IF NOT EXISTS `users` (
-`id` int(10) unsigned NOT NULL,
+CREATE TABLE `users` (
+  `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `password` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -1542,17 +1587,18 @@ CREATE TABLE IF NOT EXISTS `users` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `role_id`, `remember_token`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'Superadmin', 'admin@admin.com', '$2y$10$/1UZ2XHMAD8KznK7B80mTe/.UP.rba9Cta0bXWKuQebFjTGSddbhm', 1, '9Cv37wFJwP60y5j2Nl4c6kxV5ytfBOWCiJI4q4Own9UuzTGnZQRIwpk0nxWY', '2017-07-11 03:27:25', '2017-07-23 23:52:46', NULL),
-(2, 'User', 'user@user.com', '$2y$10$XuwWv0DZmGDQ0Do14vffSu1iROgkAgAYnabfZLhNVUHfhSzYfEcwi', 2, 'xnjdI35WL2S5Ki63FWyg4sgloQItroGVkeLoIL5vqA4qkxh7tanpLTwPGb8J', '2017-07-15 12:26:11', '2017-07-24 01:00:09', NULL),
-(3, 'admin', 'admin@mail.com', '$2y$10$YCYfFsiYpH.udai3JF1fUOyYlM4Wm/JzqZ2ka1OMCGZ23p7eiWPVK', 1, 'wnZSUHjs5CkWisAqvScPCEzH6MI8ZsAY8P21UbTdxmIVVNVCNifcNx8rNzZa', '2024-01-03 04:52:53', '2024-01-03 04:52:53', NULL),
-(4, 'lab', 'lab@mail.com', '$2y$10$qAWXFLrHsj9zdADrsXic1.hXuCaUMYbI2qmimkTwrcUBo.25/NTPG', 3, 'b8STBVlxJQ9druRZD3Aufe8C63e2Hef2qLQf6hPsQ0Yj67mF91cqx11IolK6', '2024-01-11 20:43:29', '2024-01-11 20:43:29', NULL);
+(1, 'Superadmin', 'admin@admin.com', '$2y$10$pLQvIAXu6w.ZcJlg4oPDjugZ/S1HnNDHOKDM/ax9ox2r3ZsL4.UKG', 1, '17Ry86zcVh2jtv8hNIb1fd8s40Qe1pabdWv0Sb1ThWBJvWUNUiCDNZzOqJej', '2017-07-11 03:27:25', '2024-02-25 11:01:28', NULL),
+(2, 'User', 'user@user.com', '$2y$10$h3rM/8I9f3iQs8LqbcnUcuTjdzRCYG2dKwtaiaruiQvLMF4.jd2KW', 2, 'HLF917BuuvQt9peTBpI5FKUeQLptbE1To8uN3OyLZpSGY6jIw0gPPThIEAla', '2017-07-15 12:26:11', '2024-02-25 10:33:51', NULL),
+(3, 'admin', 'admin@mail.com', '$2y$10$rOOmpLO1/ZqBF3sKSUKG8.2c8ZMZrWTnLOgIV7/izaVwkiMQ7oaEG', 1, 'ZvUaGkAiiohft0JQCNffPyLsoy7q6E9TPle4I18hQHrXHcHgy9Ssf1L94Bk4', '2024-01-03 04:52:53', '2024-02-25 11:00:54', NULL),
+(4, 'lab', 'lab@mail.com', '$2y$10$YRLrX2iMMt0daz04Gqh61u8BY8ir5eG0wP6rsFDoJwGtuScHb/xYW', 3, 'aKVCqRpwBcqLhy6BrryMYWwJzQ56Iv97vpwVgM1gnp88W8lpZoD2Gj6Fz34p', '2024-01-11 20:43:29', '2024-02-25 10:34:07', NULL),
+(5, 'Test', 'test@gmail.com', '$2y$10$KJxQLOG9QFyY1fLcv/EdpOR8BHBHmPuU6ReOUpw67/DNirkyCyEH2', 2, NULL, '2024-02-25 10:35:17', '2024-02-25 10:35:17', NULL);
 
 --
 -- Indexes for dumped tables
@@ -1562,217 +1608,245 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `role_id`, `remember_tok
 -- Indexes for table `appointments`
 --
 ALTER TABLE `appointments`
- ADD PRIMARY KEY (`id`), ADD KEY `appointments_patient_id_foreign` (`patient_id`), ADD KEY `appointments_doctor_id_foreign` (`doctor_id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `appointments_patient_id_foreign` (`patient_id`),
+  ADD KEY `appointments_doctor_id_foreign` (`doctor_id`);
 
 --
 -- Indexes for table `departments`
 --
 ALTER TABLE `departments`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `doctors`
 --
 ALTER TABLE `doctors`
- ADD PRIMARY KEY (`id`), ADD KEY `doctors_employee_id_foreign` (`employee_id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `doctors_employee_id_foreign` (`employee_id`);
 
 --
 -- Indexes for table `doctor_referreds`
 --
 ALTER TABLE `doctor_referreds`
- ADD PRIMARY KEY (`id`), ADD KEY `doctor_referreds_doctor_id_foreign` (`doctor_id`), ADD KEY `doctor_referreds_invoice_id_foreign` (`invoice_id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `doctor_referreds_doctor_id_foreign` (`doctor_id`),
+  ADD KEY `doctor_referreds_invoice_id_foreign` (`invoice_id`);
 
 --
 -- Indexes for table `employees`
 --
 ALTER TABLE `employees`
- ADD PRIMARY KEY (`id`), ADD KEY `employees_department_id_foreign` (`department_id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `employees_department_id_foreign` (`department_id`);
 
 --
 -- Indexes for table `examination_results`
 --
 ALTER TABLE `examination_results`
- ADD PRIMARY KEY (`id`), ADD KEY `examination_results_test_report_id_foreign` (`test_report_id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `examination_results_test_report_id_foreign` (`test_report_id`);
 
 --
 -- Indexes for table `hospitals`
 --
 ALTER TABLE `hospitals`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `invoices`
 --
 ALTER TABLE `invoices`
- ADD PRIMARY KEY (`id`), ADD KEY `invoices_user_id_foreign` (`user_id`), ADD KEY `invoices_patient_id_foreign` (`patient_id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `invoices_user_id_foreign` (`user_id`),
+  ADD KEY `invoices_patient_id_foreign` (`patient_id`);
 
 --
 -- Indexes for table `invoice_returns`
 --
 ALTER TABLE `invoice_returns`
- ADD PRIMARY KEY (`id`), ADD KEY `invoice_returns_invoice_id_foreign` (`invoice_id`), ADD KEY `invoice_returns_user_id_foreign` (`user_id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `invoice_returns_invoice_id_foreign` (`invoice_id`),
+  ADD KEY `invoice_returns_user_id_foreign` (`user_id`);
 
 --
 -- Indexes for table `migrations`
 --
 ALTER TABLE `migrations`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `opd_sales`
 --
 ALTER TABLE `opd_sales`
- ADD PRIMARY KEY (`id`), ADD KEY `opd_sales_doctor_id_foreign` (`doctor_id`), ADD KEY `opd_sales_invoice_id_foreign` (`invoice_id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `opd_sales_doctor_id_foreign` (`doctor_id`),
+  ADD KEY `opd_sales_invoice_id_foreign` (`invoice_id`);
 
 --
 -- Indexes for table `packages`
 --
 ALTER TABLE `packages`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `package_sales`
 --
 ALTER TABLE `package_sales`
- ADD PRIMARY KEY (`id`), ADD KEY `package_sales_package_id_foreign` (`package_id`), ADD KEY `package_sales_invoice_id_foreign` (`invoice_id`), ADD KEY `package_sales_patient_id_foreign` (`patient_id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `package_sales_package_id_foreign` (`package_id`),
+  ADD KEY `package_sales_invoice_id_foreign` (`invoice_id`),
+  ADD KEY `package_sales_patient_id_foreign` (`patient_id`);
 
 --
 -- Indexes for table `package_tests`
 --
 ALTER TABLE `package_tests`
- ADD PRIMARY KEY (`id`), ADD KEY `package_tests_test_id_foreign` (`test_id`), ADD KEY `package_tests_package_id_foreign` (`package_id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `package_tests_test_id_foreign` (`test_id`),
+  ADD KEY `package_tests_package_id_foreign` (`package_id`);
 
 --
 -- Indexes for table `password_resets`
 --
 ALTER TABLE `password_resets`
- ADD KEY `password_resets_email_index` (`email`);
+  ADD KEY `password_resets_email_index` (`email`);
 
 --
 -- Indexes for table `patients`
 --
 ALTER TABLE `patients`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `permissions`
 --
 ALTER TABLE `permissions`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `permission_role`
 --
 ALTER TABLE `permission_role`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `reference_results`
 --
 ALTER TABLE `reference_results`
- ADD PRIMARY KEY (`id`), ADD KEY `reference_results_test_report_id_foreign` (`test_report_id`), ADD KEY `reference_results_test_reference_id_foreign` (`test_reference_id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `reference_results_test_report_id_foreign` (`test_report_id`),
+  ADD KEY `reference_results_test_reference_id_foreign` (`test_reference_id`);
 
 --
 -- Indexes for table `reports`
 --
 ALTER TABLE `reports`
- ADD PRIMARY KEY (`id`), ADD KEY `reports_patient_id_foreign` (`patient_id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `reports_patient_id_foreign` (`patient_id`);
 
 --
 -- Indexes for table `roles`
 --
 ALTER TABLE `roles`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `services`
 --
 ALTER TABLE `services`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `service_sales`
 --
 ALTER TABLE `service_sales`
- ADD PRIMARY KEY (`id`), ADD KEY `service_sales_invoice_id_foreign` (`invoice_id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `service_sales_invoice_id_foreign` (`invoice_id`);
 
 --
 -- Indexes for table `temps`
 --
 ALTER TABLE `temps`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `tests`
 --
 ALTER TABLE `tests`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `test_antibiotics`
 --
 ALTER TABLE `test_antibiotics`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `test_antibiotic_results`
 --
 ALTER TABLE `test_antibiotic_results`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `test_examinations`
 --
 ALTER TABLE `test_examinations`
- ADD PRIMARY KEY (`id`), ADD KEY `test_examinations_test_id_foreign` (`test_id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `test_examinations_test_id_foreign` (`test_id`);
 
 --
 -- Indexes for table `test_references`
 --
 ALTER TABLE `test_references`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `test_reference_results`
 --
 ALTER TABLE `test_reference_results`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `test_reports`
 --
 ALTER TABLE `test_reports`
- ADD PRIMARY KEY (`id`), ADD KEY `test_reports_test_id_foreign` (`test_id`), ADD KEY `test_reports_report_id_foreign` (`report_id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `test_reports_test_id_foreign` (`test_id`),
+  ADD KEY `test_reports_report_id_foreign` (`report_id`);
 
 --
 -- Indexes for table `test_results`
 --
 ALTER TABLE `test_results`
- ADD PRIMARY KEY (`id`), ADD KEY `test_results_test_report_id_foreign` (`test_report_id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `test_results_test_report_id_foreign` (`test_report_id`);
 
 --
 -- Indexes for table `test_stains`
 --
 ALTER TABLE `test_stains`
- ADD PRIMARY KEY (`id`), ADD KEY `test_stains_test_id_foreign` (`test_id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `test_stains_test_id_foreign` (`test_id`);
 
 --
 -- Indexes for table `test_test_antibiotic`
 --
 ALTER TABLE `test_test_antibiotic`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `test_test_reference`
 --
 ALTER TABLE `test_test_reference`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
- ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `users_email_unique` (`email`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `users_email_unique` (`email`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -1782,177 +1856,213 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `appointments`
 --
 ALTER TABLE `appointments`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
 --
 -- AUTO_INCREMENT for table `departments`
 --
 ALTER TABLE `departments`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=23;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+
 --
 -- AUTO_INCREMENT for table `doctors`
 --
 ALTER TABLE `doctors`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
 --
 -- AUTO_INCREMENT for table `doctor_referreds`
 --
 ALTER TABLE `doctor_referreds`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
 -- AUTO_INCREMENT for table `employees`
 --
 ALTER TABLE `employees`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
 --
 -- AUTO_INCREMENT for table `examination_results`
 --
 ALTER TABLE `examination_results`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `hospitals`
 --
 ALTER TABLE `hospitals`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `invoices`
 --
 ALTER TABLE `invoices`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
 --
 -- AUTO_INCREMENT for table `invoice_returns`
 --
 ALTER TABLE `invoice_returns`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=36;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+
 --
 -- AUTO_INCREMENT for table `opd_sales`
 --
 ALTER TABLE `opd_sales`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- AUTO_INCREMENT for table `packages`
 --
 ALTER TABLE `packages`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- AUTO_INCREMENT for table `package_sales`
 --
 ALTER TABLE `package_sales`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `package_tests`
 --
 ALTER TABLE `package_tests`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- AUTO_INCREMENT for table `patients`
 --
 ALTER TABLE `patients`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
 --
 -- AUTO_INCREMENT for table `permissions`
 --
 ALTER TABLE `permissions`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=113;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=113;
+
 --
 -- AUTO_INCREMENT for table `permission_role`
 --
 ALTER TABLE `permission_role`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=283;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=296;
+
 --
 -- AUTO_INCREMENT for table `reference_results`
 --
 ALTER TABLE `reference_results`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `reports`
 --
 ALTER TABLE `reports`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
 --
 -- AUTO_INCREMENT for table `services`
 --
 ALTER TABLE `services`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=182;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=182;
+
 --
 -- AUTO_INCREMENT for table `service_sales`
 --
 ALTER TABLE `service_sales`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- AUTO_INCREMENT for table `temps`
 --
 ALTER TABLE `temps`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `tests`
 --
 ALTER TABLE `tests`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
 --
 -- AUTO_INCREMENT for table `test_antibiotics`
 --
 ALTER TABLE `test_antibiotics`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=16;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
 --
 -- AUTO_INCREMENT for table `test_antibiotic_results`
 --
 ALTER TABLE `test_antibiotic_results`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `test_examinations`
 --
 ALTER TABLE `test_examinations`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- AUTO_INCREMENT for table `test_references`
 --
 ALTER TABLE `test_references`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=61;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+
 --
 -- AUTO_INCREMENT for table `test_reference_results`
 --
 ALTER TABLE `test_reference_results`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- AUTO_INCREMENT for table `test_reports`
 --
 ALTER TABLE `test_reports`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- AUTO_INCREMENT for table `test_results`
 --
 ALTER TABLE `test_results`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- AUTO_INCREMENT for table `test_stains`
 --
 ALTER TABLE `test_stains`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `test_test_antibiotic`
 --
 ALTER TABLE `test_test_antibiotic`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- AUTO_INCREMENT for table `test_test_reference`
 --
 ALTER TABLE `test_test_reference`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=60;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
