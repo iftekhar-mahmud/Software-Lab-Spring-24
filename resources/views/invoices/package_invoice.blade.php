@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @extends('layouts.app')
 @section('content')
 
@@ -209,3 +210,5 @@ $(document).ready(function() {
 </script>
 
 @endsection
+=======
+>>>>>>> parent of f712cc7 (Updated)
