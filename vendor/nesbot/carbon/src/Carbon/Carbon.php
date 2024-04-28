@@ -1364,7 +1364,7 @@ class Carbon extends DateTime
      */
     public function toRssString()
     {
-        return $this->format(static::$S);
+        return $this->format(static::RSS);
     }
 
     /**

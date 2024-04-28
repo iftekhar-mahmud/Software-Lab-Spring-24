@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 @extends('layouts.app')
 @section('content')
 <div class="col-sm-12  main">			
@@ -179,5 +178,3 @@
 
 </script>
 @endsection
-=======
->>>>>>> parent of f712cc7 (Updated)
