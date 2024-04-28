@@ -1,4 +1,3 @@
-
 @extends('layouts.app')
 @section('content')
 
@@ -9,7 +8,7 @@
 			<li class="active">Package Invoice</li>
 		</ol>
 	</div><br><!--/.row-->
-<!-- Modal ------>
+<!-- Modal -->
 @if ($message = Session::get('success'))
 <div class="alert alert-success alert-block">
 	<button type="button" class="close" data-dismiss="alert">×</button>	
@@ -56,7 +55,7 @@
 	 		 				</select>
 	 		 			</div>
 	 		 			
-	 		 			<div class=" col-md-3 col-sm-12 form-group">
+	 		 			<div class=" col-md-3 form-group">
 								<label>Payment type</label>
 								<select name="payment_type" class="form-control">
 									<option>Cash</option>
@@ -210,7 +209,3 @@ $(document).ready(function() {
 </script>
 
 @endsection
-
-
-
-
