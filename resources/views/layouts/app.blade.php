@@ -249,17 +249,7 @@ $(document).ready(function() {
          </li>
          @endpermission
          </ul>
-         <ul class="nav navbar-nav navbar-right">
-            <li class="dropdown active">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{Auth::user()->name}} <span class="caret"></span></a>
-            <ul class="dropdown-menu" >
-                <li><a id="password_change">Change Password</a></li>
-                <li> <a href="{{ route('logout') }}"onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> Logout</a>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        {{ csrf_field() }}
-                    </form>
-                </li>
-            </ul>
+         
         </li>
         </ul>
   </div>
