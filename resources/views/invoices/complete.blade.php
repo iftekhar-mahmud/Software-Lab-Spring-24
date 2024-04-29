@@ -111,5 +111,11 @@
 
 
 <script>
+function Function()
+{
+    window.print(); 
+    window.focus();
 
+
+}
 </script>
