@@ -58,7 +58,7 @@
 				             <a class="btn btn-sm btn-primary glyphicon glyphicon-eye-open" href="{{ route('employee.show',$employee->id) }}"></a>
 				            
 				        </tr>
-				    @endforeach
+				@endforeach
 				    </tbody>
 						</table>
 					</div>
