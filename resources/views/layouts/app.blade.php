@@ -174,7 +174,8 @@ $(document).ready(function() {
                 <li><a href="{{route('employee.index')}}">Employees</a></li>
 
                 <li><a href="{{route('doctor.index')}}">Doctor OPD</a></li>
-                
+                <li><a href="{{route('invoice.report')}}">Invoice Report</a></li>
+
           </ul>
         </li>
         @endpermission
@@ -202,6 +203,7 @@ $(document).ready(function() {
         @endpermission
 
         <li class="dropdown {{ request()->is('invoice*') || request()->is('opd*') || request()->is('package/sale') || request()->is('search/invoice') ? 'active' : '' }}">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-receipt"></i> Invoice/Bill <span class="caret"></span></a>
         <ul class="dropdown-menu">
          <li><a href="{{route('invoice.index')}}">Service Bill</a></li>
           <li><a href="{{route('opd.index')}}"> OPD Bill</a></li>
@@ -225,7 +227,7 @@ $(document).ready(function() {
                 <li><a href="{{route('microbiology.index')}}"> Microbiology Report </a> </li>
                 <li><a href="{{route('examination.index')}}"> Examination Report </a> </li>
                 <li><a href="{{route('stain.index')}}"> Stain Report </a> </li>
-                
+                <li><a href="{{route('report.index')}}">Report</a></li>
             </ul>
         </li>
         @endpermission
@@ -239,6 +241,7 @@ $(document).ready(function() {
                 <li><a href="{{route('role.index')}}">Roles</a></li>
                 @endpermission
                 <li><a href="{{ route('hospital.setting')}}"> Settings</a></li>
+                <li><a href="{{ route('hospital.backup')}}"> Backup</a></li>
             @endpermission
             </ul>
          </li>

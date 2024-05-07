@@ -217,9 +217,9 @@ class PackageController extends Controller
 	 		 			
 		$list .='<tr><td>1</td><td>'.$package->name.'</td><td>Rs.'.$package->price.'</td><td><a href="/package/sale"><span class="btn-sm btn-danger glyphicon glyphicon-remove"></span></a></button></td></tr>
 		<div class="total_field">
-		<tr><td></td><td></td><td></td><td>Sub Total:Rs. '.$package->price.'</td></tr>
-		<tr><td></td><td></td><td></td><td>HST('.$hospital->tax_percent.'%):Rs. '.$tax_amount.'</td></tr><input type="hidden" id="package_charge" value="' . $package->price.'"><input type="hidden" id="tax_percent" value="' .$hospital->tax_percent.'">
-		<tr class="success"><td></td><td></td><td></td><td >Total Amount:Rs. '.$total_amount.'</td></tr></div>	</tbody>
+		<tr><td></td><td></td><td></td><td>Sub Total:$. '.$package->price.'</td></tr>
+		<tr><td></td><td></td><td></td><td>HST('.$hospital->tax_percent.'%):$. '.$tax_amount.'</td></tr><input type="hidden" id="package_charge" value="' . $package->price.'"><input type="hidden" id="tax_percent" value="' .$hospital->tax_percent.'">
+		<tr class="success"><td></td><td></td><td></td><td >Total Amount:$. '.$total_amount.'</td></tr></div>	</tbody>
 	 		 				
 	 		 			</table>';
 		return $list;

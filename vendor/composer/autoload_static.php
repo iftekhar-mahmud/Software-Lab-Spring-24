@@ -114,8 +114,8 @@ class ComposerStaticInit0a9de2228333ea5a4dbc158c15b3c615
         'phpDocumentor\\Reflection\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
-            1 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
-            2 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
+            1 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
+            2 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
         ),
         'XdgBaseDir\\' => 
         array (
@@ -346,7 +346,9 @@ class ComposerStaticInit0a9de2228333ea5a4dbc158c15b3c615
         'App\\Http\\Controllers\\HaematologyController' => __DIR__ . '/../..' . '/app/Http/Controllers/HaematologyController.php',
         'App\\Http\\Controllers\\HospitalController' => __DIR__ . '/../..' . '/app/Http/Controllers/HospitalController.php',
         'App\\Http\\Controllers\\ImmunologyController' => __DIR__ . '/../..' . '/app/Http/Controllers/ImmunologyController.php',
+        'App\\Http\\Controllers\\InvoiceController' => __DIR__ . '/../..' . '/app/Http/Controllers/InvoiceController.php',
         'App\\Http\\Controllers\\MicrobiologyController' => __DIR__ . '/../..' . '/app/Http/Controllers/MicrobiologyController.php',
+        'App\\Http\\Controllers\\OpdController' => __DIR__ . '/../..' . '/app/Http/Controllers/OpdController.php',
         'App\\Http\\Controllers\\PackageController' => __DIR__ . '/../..' . '/app/Http/Controllers/PackageController.php',
         'App\\Http\\Controllers\\PatientController' => __DIR__ . '/../..' . '/app/Http/Controllers/PatientController.php',
         'App\\Http\\Controllers\\ReferenceTestController' => __DIR__ . '/../..' . '/app/Http/Controllers/ReferenceTestController.php',
