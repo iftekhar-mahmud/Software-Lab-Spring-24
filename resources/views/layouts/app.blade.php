@@ -241,7 +241,7 @@ $(document).ready(function() {
                 <li><a href="{{route('role.index')}}">Roles</a></li>
                 @endpermission
                 <li><a href="{{ route('hospital.setting')}}"> Settings</a></li>
-                <li><a href="{{ route('hospital.backup')}}"> Backup</a></li>
+                
             @endpermission
             </ul>
          </li>

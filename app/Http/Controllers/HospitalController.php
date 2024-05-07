@@ -79,7 +79,7 @@ class HospitalController extends Controller
         $db_name = env('DB_DATABASE', 'Climslara');
         $db_user = env('DB_USERNAME', 'root');
         $db_password = env('DB_PASSWORD', '');
-        $db_host = env('DB_HOST', '127.0.0.1z');
+        $db_host = env('DB_HOST', '127.0.0.1');
         $backup_path = public_path( date('Y-M-d').'.sql');
 
         //DO NOT EDIT BELOW THIS LINE
