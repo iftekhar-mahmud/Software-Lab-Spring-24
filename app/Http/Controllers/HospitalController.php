@@ -66,7 +66,7 @@ class HospitalController extends Controller
     {
         $data = $request->all();
         //return $data['invoice_prefix'];
-        Config::set('hms.prefix', $data);
+        Config::set('Climslara.prefix', $data);
             return back()
             ->with('success', 'Prefix changed updated successfully');
          
@@ -76,9 +76,9 @@ class HospitalController extends Controller
     {
 
         //ENTER THE RELEVANT INFO BELOW
-        $db_name = env('DB_DATABASE', 'hms');
+        $db_name = env('DB_DATABASE', 'Climslara');
         $db_user = env('DB_USERNAME', 'root');
-        $db_password = env('DB_PASSWORD', 'root');
+        $db_password = env('DB_PASSWORD', '');
         $db_host = env('DB_HOST', '127.0.0.1z');
         $backup_path = public_path( date('Y-M-d').'.sql');
 

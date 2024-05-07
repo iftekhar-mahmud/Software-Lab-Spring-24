@@ -26,9 +26,9 @@ class Kernel extends ConsoleKernel
     {
         $schedule->call(function () {
             
-            $db_name = env('DB_DATABASE', 'hms');
+            $db_name = env('DB_DATABASE', 'climslara');
             $db_user = env('DB_USERNAME', 'root');
-            $db_password = env('DB_PASSWORD', 'root');
+            $db_password = env('DB_PASSWORD', '');
             $db_host = env('DB_HOST', '127.0.0.1z');
             $backup_path = public_path( 'daily_backup'.date('Y-M-d').'.sql');
 
