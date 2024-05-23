@@ -140,7 +140,7 @@ To install and run this System project from GitHub, follow these steps:
 
 ## Preview of the Software
 
-![Preview of Software](<<a href="https://ibb.co/8KqDTRj"><img src="https://i.ibb.co/ng9sZVD/collage.jpg" alt="collage" border="0" /></a>>)
+(<<a href="https://ibb.co/8KqDTRj"><img src="https://i.ibb.co/ng9sZVD/collage.jpg" alt="collage" border="0" /></a>>)
 
 
 ## Technical Documentation
@@ -162,15 +162,10 @@ public function up()
         $table->unsignedInteger('patient_id');
         $table->unsignedInteger('doctor_id');
         $table->timestamps();
-
-
-        // Defining foreign keys
         $table->foreign('patient_id')->references('id')->on('patients');
         $table->foreign('doctor_id')->references('id')->on('doctors');
     });
 }
-
-
 public function down()
 {
     Schema::table('appointments', function (Blueprint $table) {
@@ -178,11 +173,8 @@ public function down()
         $table->dropForeign(['patient_id']);
         $table->dropForeign(['doctor_id']);
     });
-
-
     Schema::dropIfExists('appointments');
 }
-
 `
 
 And this is how it looks on xaamp 
@@ -312,29 +304,26 @@ It extends a layout template and includes partial views for adding and editing a
 
 **2. Breadcrumb Navigation**
 
-`
-<div class="col-lg-12 main">			
+`<div class="col-lg-12 main">			
     <div class="row">
         <ol class="breadcrumb">
             <li><a href="#"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg></a></li>
             <li class="active">Icons</li>
             <li>Appointment</li>
         </ol>
-    </div><br><!--/.row-->
-`
+    </div><br><!--/.row-->`
 
 This section displays a breadcrumb navigation trail, helping users understand their current location within the web application.
 
 **3. Displaying Success and Error Messages**
 
-`
+```
 @if ($message = Session::get('success'))
 <div class="alert alert-success alert-block">
     <button type="button" class="close" data-dismiss="alert">×</button>	
     <strong>{{ $message }}</strong>
 </div>
 @endif
-
 @if (count($errors) > 0)
     <div class="alert alert-danger">
         <ul>
@@ -344,7 +333,7 @@ This section displays a breadcrumb navigation trail, helping users understand th
         </ul>
     </div>
 @endif
-`
+```
 
 Success Message: Displays a success message if one exists in the session.
 
@@ -354,7 +343,7 @@ Error Messages: Displays validation error messages if any exist.
 
 ***Panel Header***
 
-`
+```
 <div class="row">
     <div class="col-lg-12">
         <div class="panel panel-default">
@@ -364,14 +353,12 @@ Error Messages: Displays validation error messages if any exist.
                 </a>
             </div>
             <div class="panel-body">
-
-
-`
+```
 `<div class="panel panel-default"> ` This creates a Bootstrap panel and contains the title "Appointment Table" and a button to add a new appointment.
 
 ***Appointment Table***
 
-`
+```
 @if($appointments->count())
     <table id="example" class="table table-bordered table-striped table-condensed" cellspacing="0" width="100%">
         <thead>
@@ -425,7 +412,7 @@ Error Messages: Displays validation error messages if any exist.
 @else
     <h3 align="center">Sorry No appointment Found</h3>
 @endif
-`
+```
 ***Table Structure:*** Displays appointments in a table format with columns for ID, Name, Patient Name, Doctor, Description, Time, Date, Status, and Action.
 
 ***Loop through Appointments:*** Uses a `foreach` loop to display each appointment's details.
@@ -436,14 +423,14 @@ Error Messages: Displays validation error messages if any exist.
 
 **5. Closing Tags**
 
-`
+```
            </div>
         </div>
     </div>
 </div><!--/.row-->	
 </div><!--/.main-->
 @endsection
-`
+```
 These lines close the remaining HTML tags and end the Blade `@section` directive.
 
 ### app > Http > AppointmentController.php.
@@ -510,7 +497,7 @@ public function show($id)
 ***Logic:*** Currently empty, as this function might be handled elsewhere.
 
 **5. Edit Method**
-`
+```
 public function edit($id)
 {
     $appointment = Appointment::find($id);
@@ -523,7 +510,7 @@ public function edit($id)
     $appointment->save();
     return back()->with('success', 'Status changed successfully.');
 }
-`
+```
 ***Purpose:*** Show the form for editing the specified appointment.
 
 ***Logic:***
