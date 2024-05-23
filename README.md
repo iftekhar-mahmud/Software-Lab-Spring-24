@@ -102,7 +102,7 @@ To install and run this System project from GitHub, follow these steps:
 
 1. **Clone the Repository:**
    `
-  git clone https://github.com/iftekhar-mahmud/softlab.git
+    git clone https://github.com/iftekhar-mahmud/softlab.git
    `
    
 
@@ -140,7 +140,7 @@ To install and run this System project from GitHub, follow these steps:
 
 ## Preview of the Software
 
-(<<a href="https://ibb.co/8KqDTRj"><img src="https://i.ibb.co/ng9sZVD/collage.jpg" alt="collage" border="0" /></a>>)
+<a href="https://ibb.co/8KqDTRj"><img src="https://i.ibb.co/ng9sZVD/collage.jpg" alt="collage" border="0" /></a>
 
 
 ## Technical Documentation
@@ -149,7 +149,7 @@ To install and run this System project from GitHub, follow these steps:
 
 We used the migration system of Laravel to create our database and used the index key to connect one table with another. For example, given below is the create_appointments_table.php file from database > migration directory. 
 
-`
+```
 public function up()
 {
     Schema::create('appointments', function (Blueprint $table) {
@@ -162,10 +162,15 @@ public function up()
         $table->unsignedInteger('patient_id');
         $table->unsignedInteger('doctor_id');
         $table->timestamps();
+
+
+        // Defining foreign keys
         $table->foreign('patient_id')->references('id')->on('patients');
         $table->foreign('doctor_id')->references('id')->on('doctors');
     });
 }
+
+
 public function down()
 {
     Schema::table('appointments', function (Blueprint $table) {
@@ -173,32 +178,35 @@ public function down()
         $table->dropForeign(['patient_id']);
         $table->dropForeign(['doctor_id']);
     });
+
+
     Schema::dropIfExists('appointments');
 }
-`
+
+```
 
 And this is how it looks on xaamp 
 
-![Appointment Table shown in xaamp phpmyadmin](<<a href="https://ibb.co/n808qWL"><img src="https://i.ibb.co/VpNp0Kq/appointment-table.png" alt="appointment-table" border="0" /></a>>)
+<a href="https://ibb.co/n808qWL"><img src="https://i.ibb.co/VpNp0Kq/appointment-table.png" alt="appointment-table" border="0" /></a>
 
 
 ### Databse Migration Code Explanation 
 
 **1. Class Definition and Use Statements**
 
-`
+```
   use Illuminate\Support\Facades\Schema;
   use Illuminate\Database\Schema\Blueprint;
   use Illuminate\Database\Migrations\Migration;
   class CreateAppointmentsTable extends Migration
-`
+```
 
   This section defines the migration class CreateAppointmentsTable and includes the necessary namespaces for Schema, Blueprint, and Migration.
 
 
 **2. Running the Migration (up Method)**
 
-`
+```
   public function up()
   {
     Schema::create('appointments', function (Blueprint $table) {
@@ -215,7 +223,7 @@ And this is how it looks on xaamp
         $table->foreign('doctor_id')->references('id')->on('doctors');
     });
   }
-`
+```
 
   ***Explanation***
 
@@ -249,7 +257,7 @@ And this is how it looks on xaamp
 
 **3. Reversing the Migration (down Method)**
 
-`
+```
   public function down()
   {
      Schema::table('appointments', function (Blueprint $table) {
@@ -258,7 +266,7 @@ And this is how it looks on xaamp
      });
      Schema::dropIfExists('appointments');
   }
-`
+```
   
 
   ***Explanation:***
@@ -284,13 +292,13 @@ It extends a layout template and includes partial views for adding and editing a
 
 **1. Extending the Layout and Including Partials**
 
-`
+```
 @extends('layouts.app')
 @section('content')
 @include('appointments.partials.add')
 @include('appointments.partials.edit')
 @include('appointments.partials.js')
-`
+```
 
 `@extends('layouts.app')`: This line indicates that the view extends the app layout. This layout likely includes the basic HTML structure and common elements like the header and footer.
 
@@ -304,14 +312,16 @@ It extends a layout template and includes partial views for adding and editing a
 
 **2. Breadcrumb Navigation**
 
-`<div class="col-lg-12 main">			
+```
+<div class="col-lg-12 main">			
     <div class="row">
         <ol class="breadcrumb">
             <li><a href="#"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg></a></li>
             <li class="active">Icons</li>
             <li>Appointment</li>
         </ol>
-    </div><br><!--/.row-->`
+    </div><br><!--/.row-->
+```
 
 This section displays a breadcrumb navigation trail, helping users understand their current location within the web application.
 
@@ -324,6 +334,7 @@ This section displays a breadcrumb navigation trail, helping users understand th
     <strong>{{ $message }}</strong>
 </div>
 @endif
+
 @if (count($errors) > 0)
     <div class="alert alert-danger">
         <ul>
@@ -353,6 +364,8 @@ Error Messages: Displays validation error messages if any exist.
                 </a>
             </div>
             <div class="panel-body">
+
+
 ```
 `<div class="panel panel-default"> ` This creates a Bootstrap panel and contains the title "Appointment Table" and a button to add a new appointment.
 
@@ -438,7 +451,7 @@ These lines close the remaining HTML tags and end the Blade `@section` directive
 Now this is the part from app > Http > AppointmentController.php. This works as a backend. This `AppointmentController` class in Laravel handles CRUD operations for Appointment records. Here's an explanation of each method and its purpose:
 
 **1. Index Method**
-`
+```
 public function index()
 {
     $appointments = Appointment::get();
@@ -446,24 +459,24 @@ public function index()
     $doctors = Doctor::get();
     return view('appointments.index', compact('appointments', 'patients', 'doctors'));
 }
-`
+```
 ***Purpose:*** Displays a listing of all appointments.
 
 ***Logic:*** Fetches all appointments, patients, and doctors from the database and returns a view named appointments.index, passing the fetched data to the view.
 
 **2. Create Method**
-`
+```
 public function create()
 {
     //
 }
-`
+```
 ***Purpose:*** Show the form for creating a new appointment.
 
 ***Logic:*** Currently empty, as the form might be handled in a different way or view.
 
 **3. Store Method**
-`
+```
 public function store(Request $request)
 {
     $request['appointment_date'] = date('Y-m-d', strtotime($request->appointment_date));
@@ -472,7 +485,7 @@ public function store(Request $request)
     Appointment::create($data);
     return back()->with('success', 'Appointment saved Successfully.');
 }
-`
+```
 ***Purpose:*** Store a newly created appointment in the database.
 
 ***Logic:*** 
@@ -486,12 +499,12 @@ public function store(Request $request)
 - Redirects back with a success message.
 
 **4. Show Method**
-`
+```
 public function show($id)
 {
     //
 }
-`
+```
 ***Purpose:*** Display the specified appointment.
 
 ***Logic:*** Currently empty, as this function might be handled elsewhere.
@@ -524,18 +537,18 @@ public function edit($id)
 - Redirects back with a success message.
 
 **6. Update Method**
-`
+```
 public function update(Request $request)
 {
     // Currently empty, as the actual update logic is handled in `updated` method.
 }
-`
+```
 ***Purpose:*** Update the specified appointment in the database.
 
 ***Logic:*** Empty because the update logic is in the updated method.
 
 **7. Updated Method**
-`
+```
 public function updated(Request $request)
 {
     $this->validate($request, ['doctor_id' => 'required']);
@@ -546,7 +559,7 @@ public function updated(Request $request)
     $appointment->update($request->all());
     return back()->with('success', 'Appointment updated successfully');
 }
-`
+```
 ***Purpose:*** Update the specified appointment in the database.
 
 ***Logic:***
@@ -560,19 +573,19 @@ public function updated(Request $request)
 - Redirects back with a success message.
 
 **8. Destroy Method**
-`
+```
 public function destroy($id)
 {
     return back()->with('success', 'Appointment cannot be deleted.');
 }
-`
+```
 
 ***Purpose:*** Remove the specified appointment from storage.
 
 ***Logic:*** Returns back with a message saying the appointment cannot be deleted.
 
 **9. Toggle Status Method**
-`
+```
 public function toggleStatus($id)
 {
     $appointment = Appointment::find($id);
@@ -584,7 +597,7 @@ public function toggleStatus($id)
     $appointment->save();
     return back();
 }
-`
+```
 ***Purpose:*** Toggle the status of the specified appointment.
 
 **Logic:**
@@ -607,17 +620,17 @@ We have used GitHub to use version control. Link to all the commits : [GitHub Co
 ### Use Case Diagram 
 
 
-![Use Case Diagram](<a href="https://ibb.co/31j8hGJ"><img src="https://i.ibb.co/F6yf7NP/use-case-diagram.png" alt="use-case-diagram" border="0" /></a>)
+<a href="https://ibb.co/31j8hGJ"><img src="https://i.ibb.co/F6yf7NP/use-case-diagram.png" alt="use-case-diagram" border="0" /></a>
 
 ### Class Diagram 
 
 
-![Class Diagram](<a href="https://ibb.co/N2szWp3"><img src="https://i.ibb.co/gZ3Ctw7/class-diagam.png" alt="class-diagam" border="0" /></a>)
+<a href="https://ibb.co/N2szWp3"><img src="https://i.ibb.co/gZ3Ctw7/class-diagam.png" alt="class-diagam" border="0" /></a>
 
 
 ### Activity Diagram
 
-![Activity Diagram](<a href="https://ibb.co/QFt69Wt"><img src="https://i.ibb.co/XZMzXnM/activity.png" alt="activity" border="0" /></a>)
+<a href="https://ibb.co/QFt69Wt"><img src="https://i.ibb.co/XZMzXnM/activity.png" alt="activity" border="0" /></a>
 
 
 
