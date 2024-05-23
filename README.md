@@ -101,38 +101,38 @@ Link to our project : [GitHub](https://github.com/iftekhar-mahmud/softlab) `http
 To install and run this System project from GitHub, follow these steps:
 
 1. **Clone the Repository:**
-   ```
+   `
   git clone https://github.com/iftekhar-mahmud/softlab.git
-   ```
+   `
    
 
 2. **Navigate to the Project Directory:**
-  ```
+  `
   cd ClinicManagement
-  ```
+  `
 
 3. **Install Dependencies:**
-  ```
+  `
   composer install
-  ```
+  `
 
 4. **Set Up Environment Variables:**
   Copy the `.env.example` file and rename it to `.env`. Update the necessary environment variables such as database connection details, application key, etc.
 
 5. **Generate Application Key:**
-  ```
+  `
   php artisan key:generate
-  ```
+  `
 
 6. **Run Migrations:**
-  ```
+  `
   php artisan migrate
-  ```
+  `
 
 7. **Start the Development Server:**
-  ```
+  `
   php artisan serve
-  ```
+  `
 
 8. **Access the Application:**
   Open your web browser and navigate to `http://localhost:8000` to access the EHR System.
@@ -149,7 +149,7 @@ To install and run this System project from GitHub, follow these steps:
 
 We used the migration system of Laravel to create our database and used the index key to connect one table with another. For example, given below is the create_appointments_table.php file from database > migration directory. 
 
-```
+`
 public function up()
 {
     Schema::create('appointments', function (Blueprint $table) {
@@ -183,7 +183,7 @@ public function down()
     Schema::dropIfExists('appointments');
 }
 
-```
+`
 
 And this is how it looks on xaamp 
 
@@ -194,19 +194,19 @@ And this is how it looks on xaamp
 
 **1. Class Definition and Use Statements**
 
-```
+`
   use Illuminate\Support\Facades\Schema;
   use Illuminate\Database\Schema\Blueprint;
   use Illuminate\Database\Migrations\Migration;
   class CreateAppointmentsTable extends Migration
-```
+`
 
   This section defines the migration class CreateAppointmentsTable and includes the necessary namespaces for Schema, Blueprint, and Migration.
 
 
 **2. Running the Migration (up Method)**
 
-```
+`
   public function up()
   {
     Schema::create('appointments', function (Blueprint $table) {
@@ -223,7 +223,7 @@ And this is how it looks on xaamp
         $table->foreign('doctor_id')->references('id')->on('doctors');
     });
   }
-```
+`
 
   ***Explanation***
 
@@ -257,7 +257,7 @@ And this is how it looks on xaamp
 
 **3. Reversing the Migration (down Method)**
 
-```
+`
   public function down()
   {
      Schema::table('appointments', function (Blueprint $table) {
@@ -266,7 +266,7 @@ And this is how it looks on xaamp
      });
      Schema::dropIfExists('appointments');
   }
-```
+`
   
 
   ***Explanation:***
@@ -292,13 +292,13 @@ It extends a layout template and includes partial views for adding and editing a
 
 **1. Extending the Layout and Including Partials**
 
-```
+`
 @extends('layouts.app')
 @section('content')
 @include('appointments.partials.add')
 @include('appointments.partials.edit')
 @include('appointments.partials.js')
-```
+`
 
 `@extends('layouts.app')`: This line indicates that the view extends the app layout. This layout likely includes the basic HTML structure and common elements like the header and footer.
 
@@ -312,7 +312,7 @@ It extends a layout template and includes partial views for adding and editing a
 
 **2. Breadcrumb Navigation**
 
-```
+`
 <div class="col-lg-12 main">			
     <div class="row">
         <ol class="breadcrumb">
@@ -321,13 +321,13 @@ It extends a layout template and includes partial views for adding and editing a
             <li>Appointment</li>
         </ol>
     </div><br><!--/.row-->
-```
+`
 
 This section displays a breadcrumb navigation trail, helping users understand their current location within the web application.
 
 **3. Displaying Success and Error Messages**
 
-```
+`
 @if ($message = Session::get('success'))
 <div class="alert alert-success alert-block">
     <button type="button" class="close" data-dismiss="alert">×</button>	
@@ -344,7 +344,7 @@ This section displays a breadcrumb navigation trail, helping users understand th
         </ul>
     </div>
 @endif
-```
+`
 
 Success Message: Displays a success message if one exists in the session.
 
@@ -354,7 +354,7 @@ Error Messages: Displays validation error messages if any exist.
 
 ***Panel Header***
 
-```
+`
 <div class="row">
     <div class="col-lg-12">
         <div class="panel panel-default">
@@ -366,12 +366,12 @@ Error Messages: Displays validation error messages if any exist.
             <div class="panel-body">
 
 
-```
+`
 `<div class="panel panel-default"> ` This creates a Bootstrap panel and contains the title "Appointment Table" and a button to add a new appointment.
 
 ***Appointment Table***
 
-```
+`
 @if($appointments->count())
     <table id="example" class="table table-bordered table-striped table-condensed" cellspacing="0" width="100%">
         <thead>
@@ -425,7 +425,7 @@ Error Messages: Displays validation error messages if any exist.
 @else
     <h3 align="center">Sorry No appointment Found</h3>
 @endif
-```
+`
 ***Table Structure:*** Displays appointments in a table format with columns for ID, Name, Patient Name, Doctor, Description, Time, Date, Status, and Action.
 
 ***Loop through Appointments:*** Uses a `foreach` loop to display each appointment's details.
@@ -436,14 +436,14 @@ Error Messages: Displays validation error messages if any exist.
 
 **5. Closing Tags**
 
-```
+`
            </div>
         </div>
     </div>
 </div><!--/.row-->	
 </div><!--/.main-->
 @endsection
-```
+`
 These lines close the remaining HTML tags and end the Blade `@section` directive.
 
 ### app > Http > AppointmentController.php.
@@ -451,7 +451,7 @@ These lines close the remaining HTML tags and end the Blade `@section` directive
 Now this is the part from app > Http > AppointmentController.php. This works as a backend. This `AppointmentController` class in Laravel handles CRUD operations for Appointment records. Here's an explanation of each method and its purpose:
 
 **1. Index Method**
-```
+`
 public function index()
 {
     $appointments = Appointment::get();
@@ -459,24 +459,24 @@ public function index()
     $doctors = Doctor::get();
     return view('appointments.index', compact('appointments', 'patients', 'doctors'));
 }
-```
+`
 ***Purpose:*** Displays a listing of all appointments.
 
 ***Logic:*** Fetches all appointments, patients, and doctors from the database and returns a view named appointments.index, passing the fetched data to the view.
 
 **2. Create Method**
-```
+`
 public function create()
 {
     //
 }
-```
+`
 ***Purpose:*** Show the form for creating a new appointment.
 
 ***Logic:*** Currently empty, as the form might be handled in a different way or view.
 
 **3. Store Method**
-```
+`
 public function store(Request $request)
 {
     $request['appointment_date'] = date('Y-m-d', strtotime($request->appointment_date));
@@ -485,7 +485,7 @@ public function store(Request $request)
     Appointment::create($data);
     return back()->with('success', 'Appointment saved Successfully.');
 }
-```
+`
 ***Purpose:*** Store a newly created appointment in the database.
 
 ***Logic:*** 
@@ -499,18 +499,18 @@ public function store(Request $request)
 - Redirects back with a success message.
 
 **4. Show Method**
-```
+`
 public function show($id)
 {
     //
 }
-```
+`
 ***Purpose:*** Display the specified appointment.
 
 ***Logic:*** Currently empty, as this function might be handled elsewhere.
 
 **5. Edit Method**
-```
+`
 public function edit($id)
 {
     $appointment = Appointment::find($id);
@@ -523,7 +523,7 @@ public function edit($id)
     $appointment->save();
     return back()->with('success', 'Status changed successfully.');
 }
-```
+`
 ***Purpose:*** Show the form for editing the specified appointment.
 
 ***Logic:***
@@ -537,18 +537,18 @@ public function edit($id)
 - Redirects back with a success message.
 
 **6. Update Method**
-```
+`
 public function update(Request $request)
 {
     // Currently empty, as the actual update logic is handled in `updated` method.
 }
-```
+`
 ***Purpose:*** Update the specified appointment in the database.
 
 ***Logic:*** Empty because the update logic is in the updated method.
 
 **7. Updated Method**
-```
+`
 public function updated(Request $request)
 {
     $this->validate($request, ['doctor_id' => 'required']);
@@ -559,7 +559,7 @@ public function updated(Request $request)
     $appointment->update($request->all());
     return back()->with('success', 'Appointment updated successfully');
 }
-```
+`
 ***Purpose:*** Update the specified appointment in the database.
 
 ***Logic:***
@@ -573,19 +573,19 @@ public function updated(Request $request)
 - Redirects back with a success message.
 
 **8. Destroy Method**
-```
+`
 public function destroy($id)
 {
     return back()->with('success', 'Appointment cannot be deleted.');
 }
-```
+`
 
 ***Purpose:*** Remove the specified appointment from storage.
 
 ***Logic:*** Returns back with a message saying the appointment cannot be deleted.
 
 **9. Toggle Status Method**
-```
+`
 public function toggleStatus($id)
 {
     $appointment = Appointment::find($id);
@@ -597,7 +597,7 @@ public function toggleStatus($id)
     $appointment->save();
     return back();
 }
-```
+`
 ***Purpose:*** Toggle the status of the specified appointment.
 
 **Logic:**
